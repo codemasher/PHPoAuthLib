@@ -12,46 +12,48 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\OAuth2\Service\Facebook;
-use OAuth\Common\Storage\Session;
-use OAuth\Common\Consumer\Credentials;
+use OAuth\_killme\CredentialsInterface;
+use OAuth\Service\Providers\OAuth2\Facebook;
+use OAuth\Storage\Session;
 
 /**
  * Bootstrap the example
  */
-require_once __DIR__ . '/bootstrap.php';
+require_once __DIR__.'/bootstrap.php';
 
 // Session storage
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new Credentials(
-    $servicesCredentials['facebook']['key'],
-    $servicesCredentials['facebook']['secret'],
-    $currentUri->getAbsoluteUri()
+$credentials = new CredentialsInterface(
+	$servicesCredentials['facebook']['key'],
+	$servicesCredentials['facebook']['secret'],
+	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Facebook service using the credentials, http client and storage mechanism for the token
 /** @var $facebookService Facebook */
-$facebookService = $serviceFactory->createService('facebook', $credentials, $storage, array());
+$facebookService = $serviceFactory->createService('facebook', $credentials, $storage, []);
 
-if (!empty($_GET['code'])) {
-    // retrieve the CSRF state parameter
-    $state = isset($_GET['state']) ? $_GET['state'] : null;
+if(!empty($_GET['code'])){
+	// retrieve the CSRF state parameter
+	$state = isset($_GET['state']) ? $_GET['state'] : null;
 
-    // This was a callback request from facebook, get the token
-    $token = $facebookService->requestAccessToken($_GET['code'], $state);
+	// This was a callback request from facebook, get the token
+	$token = $facebookService->requestAccessToken($_GET['code'], $state);
 
-    // Send a request with it
-    $result = json_decode($facebookService->request('/me'), true);
+	// Send a request with it
+	$result = json_decode($facebookService->request('/me'), true);
 
-    // Show some of the resultant data
-    echo 'Your unique facebook user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
+	// Show some of the resultant data
+	echo 'Your unique facebook user id is: '.$result['id'].' and your name is '.$result['name'];
 
-} elseif (!empty($_GET['go']) && $_GET['go'] === 'go') {
-    $url = $facebookService->getAuthorizationUri();
-    header('Location: ' . $url);
-} else {
-    $url = $currentUri->getRelativeUri() . '?go=go';
-    echo "<a href='$url'>Login with Facebook!</a>";
+}
+elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
+	$url = $facebookService->getAuthorizationUri();
+	header('Location: '.$url);
+}
+else{
+	$url = $currentUri->getRelativeUri().'?go=go';
+	echo "<a href='$url'>Login with Facebook!</a>";
 }
