@@ -9,8 +9,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\EveOnline;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -22,14 +21,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['eveonline']['key'],
-	$servicesCredentials['eveonline']['secret'],
+$credentials = new Credentials(
+	getenv('EVEONLINE_KEY'),
+	getenv('EVEONLINE_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Eve Online service using the credentials, http client, storage mechanism for the token and profile scope
-/** @var EveOnline $eveService */
+/** @var $eveService \OAuth\Service\Providers\OAuth2\EveOnline */
 $eveService = $serviceFactory->createService('EveOnline', $credentials, $storage, ['']);
 
 if(!empty($_GET['code'])){

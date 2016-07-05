@@ -8,8 +8,8 @@
  * @link    https://developers.pinterest.com/docs/api/overview/
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Http\Client\CurlClient;
+use OAuth\_killme\Credentials;
+use OAuth\Http\CurlClient;
 use OAuth\Service\Providers\OAuth2\Pinterest;
 use OAuth\Storage\Session;
 
@@ -22,9 +22,9 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['pinterest']['key'],
-	$servicesCredentials['pinterest']['secret'],
+$credentials = new Credentials(
+	getenv('PINTEREST_KEY'),
+	getenv('PINTEREST_SECRET'),
 	preg_replace('$http://$', 'https://', $currentUri->getAbsoluteUri()) // Pinterest require Https callback's url
 );
 $serviceFactory->setHttpClient(new CurlClient);

@@ -25,13 +25,13 @@ $storage = new Session();
 
 // Setup the credentials for the requests
 $credentials = new Credentials(
-	$servicesCredentials['deviantart']['key'],
-	$servicesCredentials['deviantart']['secret'],
+	getenv('DEVIANTART_KEY'),
+	getenv('DEVIANTART_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the DeviantArt service using the credentials, http client and storage mechanism for the token
-/** @var $deviantArtService DeviantArt */
+/** @var $deviantArtService \OAuth\Service\Providers\OAuth2\DeviantArt */
 $deviantArtService = $serviceFactory->createService('DeviantArt', $credentials, $storage, ['browse']);
 
 if(!empty($_GET['code'])){

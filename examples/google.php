@@ -11,8 +11,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\Google;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -24,14 +23,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['google']['key'],
-	$servicesCredentials['google']['secret'],
+$credentials = new Credentials(
+	getenv('GOOGLE_KEY'),
+	getenv('GOOGLE_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Google service using the credentials, http client and storage mechanism for the token
-/** @var $googleService Google */
+/** @var $googleService \OAuth\Service\Providers\OAuth2\Google */
 $googleService = $serviceFactory->createService(
 	'google', $credentials, $storage, [
 	'userinfo_email',

@@ -12,7 +12,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -24,9 +24,9 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['instagram']['key'],
-	$servicesCredentials['instagram']['secret'],
+$credentials = new Credentials(
+	getenv('INSTAGRAM_KEY'),
+	getenv('INSTAGRAM_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 

@@ -11,8 +11,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\Spotify;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -24,14 +23,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['spotify']['key'],
-	$servicesCredentials['spotify']['secret'],
+$credentials = new Credentials(
+	getenv('SPOTIFY_KEY'),
+	getenv('SPOTIFY_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Spotify service using the credentials, http client and storage mechanism for the token
-/** @var $spotifyService Spotify */
+/** @var $spotifyService \OAuth\Service\Providers\OAuth2\Spotify */
 $spotifyService = $serviceFactory->createService('spotify', $credentials, $storage);
 
 if(!empty($_GET['code'])){

@@ -11,7 +11,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -27,9 +27,9 @@ $storage = new Session();
 // Instantiate the GitHub service using the credentials, http client and storage mechanism for the token
 /** @var $gitHub \OAuth\Service\Providers\OAuth2\GitHub */
 $gitHub = $serviceFactory->createService(
-	'GitHub', new CredentialsInterface(
-	$servicesCredentials['github']['key'],
-	$servicesCredentials['github']['secret'],
+	'GitHub', new Credentials(
+	getenv('GITHUB_KEY'),
+	getenv('GITHUB_SECRET'),
 	$currentUri->getAbsoluteUri()
 ), $storage, ['user']
 );

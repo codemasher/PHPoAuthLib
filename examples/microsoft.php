@@ -11,8 +11,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\Microsoft;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -24,14 +23,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['microsoft']['key'],
-	$servicesCredentials['microsoft']['secret'],
+$credentials = new Credentials(
+	getenv('MICROSOFT_KEY'),
+	getenv('MICROSOFT_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Microsoft service using the credentials, http client and storage mechanism for the token
-/** @var $microsoft Microsoft */
+/** @var $microsoft \OAuth\Service\Providers\OAuth2\Microsoft */
 $microsoft = $serviceFactory->createService('microsoft', $credentials, $storage, ['basic']);
 
 if(!empty($_GET['code'])){

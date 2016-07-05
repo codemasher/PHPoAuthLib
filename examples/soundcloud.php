@@ -11,8 +11,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\SoundCloud;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -24,14 +23,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['soundcloud']['key'],
-	$servicesCredentials['soundcloud']['secret'],
+$credentials = new Credentials(
+	getenv('SOUNDCLOUD_KEY'),
+	getenv('SOUNDCLOUD_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the SoundCloud service using the credentials, http client and storage mechanism for the token
-/** @var $soundcloudService SoundCloud */
+/** @var $soundcloudService \OAuth\Service\Providers\OAuth2\SoundCloud */
 $soundcloudService = $serviceFactory->createService('soundCloud', $credentials, $storage);
 
 if(!empty($_GET['code'])){

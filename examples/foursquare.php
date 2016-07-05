@@ -11,8 +11,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\Foursquare;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -24,14 +23,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['foursquare']['key'],
-	$servicesCredentials['foursquare']['secret'],
+$credentials = new Credentials(
+	getenv('FOURSQUARE_KEY'),
+	getenv('FOURSQUARE_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Foursquare service using the credentials, http client and storage mechanism for the token
-/** @var $foursquareService Foursquare */
+/** @var $foursquareService \OAuth\Service\Providers\OAuth2\Foursquare */
 $foursquareService = $serviceFactory->createService('foursquare', $credentials, $storage);
 
 if(!empty($_GET['code'])){

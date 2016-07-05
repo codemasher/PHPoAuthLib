@@ -10,7 +10,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -22,9 +22,9 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['paypal']['key'],
-	$servicesCredentials['paypal']['secret'],
+$credentials = new Credentials(
+	getenv('PAYPAL_KEY'),
+	getenv('PAYPAL_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 

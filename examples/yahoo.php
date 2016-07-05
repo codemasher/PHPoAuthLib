@@ -8,7 +8,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -20,13 +20,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['yahoo']['key'],
-	$servicesCredentials['yahoo']['secret'],
+$credentials = new Credentials(
+	getenv('YAHOO_KEY'),
+	getenv('YAHOO_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Yahoo service using the credentials, http client and storage mechanism for the token
+/** @var $yahooService \OAuth\Service\Providers\OAuth2\Yahoo */
 $yahooService = $serviceFactory->createService('Yahoo', $credentials, $storage);
 
 if(!empty($_GET['oauth_token'])){

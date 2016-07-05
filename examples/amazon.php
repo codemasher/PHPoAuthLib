@@ -10,8 +10,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Service\Providers\OAuth2\Amazon;
+use OAuth\_killme\Credentials;
 use OAuth\Storage\Session;
 
 /**
@@ -23,14 +22,14 @@ require_once __DIR__.'/bootstrap.php';
 $storage = new Session();
 
 // Setup the credentials for the requests
-$credentials = new CredentialsInterface(
-	$servicesCredentials['amazon']['key'],
-	$servicesCredentials['amazon']['secret'],
+$credentials = new Credentials(
+	getenv('AMAZON_KEY'),
+	getenv('AMAZON_SECRET'),
 	$currentUri->getAbsoluteUri()
 );
 
 // Instantiate the Amazon service using the credentials, http client, storage mechanism for the token and profile scope
-/** @var $amazonService Amazon */
+/** @var $amazonService \OAuth\Service\Providers\OAuth2\Amazon */
 $amazonService = $serviceFactory->createService('amazon', $credentials, $storage, ['profile']);
 
 if(!empty($_GET['code'])){
