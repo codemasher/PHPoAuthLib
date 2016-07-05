@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class InstagramTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Instagram(
@@ -30,7 +30,7 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Instagram(
@@ -43,7 +43,7 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Instagram(
@@ -58,8 +58,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Instagram(
@@ -75,8 +75,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Instagram(
@@ -92,8 +92,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -119,8 +119,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -138,8 +138,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -157,8 +157,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -174,8 +174,8 @@ class InstagramTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Instagram::__construct
-	 * @covers OAuth\OAuth2\Service\Instagram::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class GitHubTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new GitHub(
@@ -30,7 +30,7 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new GitHub(
@@ -43,7 +43,7 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new GitHub(
@@ -58,8 +58,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new GitHub(
@@ -72,8 +72,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new GitHub(
@@ -86,8 +86,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -113,8 +113,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -132,8 +132,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -151,8 +151,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -168,8 +168,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::getExtraOAuthHeaders
+
+
 	 */
 	public function testGetExtraOAuthHeaders(){
 		$client = $this->getMock(ClientInterface::class);
@@ -195,8 +195,8 @@ class GitHubTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\GitHub::__construct
-	 * @covers OAuth\OAuth2\Service\GitHub::getExtraApiHeaders
+
+
 	 */
 	public function testGetExtraApiHeaders(){
 		$client = $this->getMock(ClientInterface::class);

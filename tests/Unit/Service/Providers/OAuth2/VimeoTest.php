@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class VimeoTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Vimeo(
@@ -30,7 +30,7 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Vimeo(
@@ -43,7 +43,7 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Vimeo(
@@ -58,8 +58,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Vimeo(
@@ -75,8 +75,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Vimeo(
@@ -92,8 +92,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -119,8 +119,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -138,8 +138,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -157,8 +157,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -174,8 +174,8 @@ class VimeoTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vimeo::__construct
-	 * @covers OAuth\OAuth2\Service\Vimeo::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class SpotifyTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Spotify(
@@ -30,7 +30,7 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Spotify(
@@ -43,7 +43,7 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Spotify(
@@ -58,8 +58,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Spotify(
@@ -72,8 +72,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Spotify(
@@ -86,8 +86,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -113,8 +113,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -132,8 +132,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -151,8 +151,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -168,8 +168,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -185,8 +185,8 @@ class SpotifyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Spotify::__construct
-	 * @covers OAuth\OAuth2\Service\Spotify::getExtraOAuthHeaders
+
+
 	 */
 	public function testGetExtraOAuthHeaders(){
 		$client = $this->getMock(ClientInterface::class);

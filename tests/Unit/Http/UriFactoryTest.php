@@ -17,8 +17,8 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayUsingProxyStyle(){
 		$factory = new UriFactory();
@@ -34,14 +34,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayHttp(){
 		$factory = new UriFactory();
@@ -66,14 +66,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	/**
 	 * This looks wonky David. Should the port really fallback to 80 even when supplying https as scheme?
 	 *
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayHttps(){
 		$factory = new UriFactory();
@@ -96,14 +96,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayPortSupplied(){
 		$factory = new UriFactory();
@@ -126,14 +126,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayPortNotSet(){
 		$factory = new UriFactory();
@@ -155,14 +155,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayRequestUriSet(){
 		$factory = new UriFactory();
@@ -184,14 +184,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayRedirectUrlSet(){
 		$factory = new UriFactory();
@@ -213,14 +213,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayThrowsExceptionOnDetectingPathMissingIndices(){
 		$factory = new UriFactory();
@@ -236,14 +236,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayWithQueryString(){
 		$factory = new UriFactory();
@@ -265,14 +265,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayWithoutQueryString(){
 		$factory = new UriFactory();
@@ -293,14 +293,14 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromSuperGlobalArray
-	 * @covers OAuth\Common\Http\Uri\UriFactory::attemptProxyStyleParse
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectScheme
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectHost
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPort
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectPath
-	 * @covers OAuth\Common\Http\Uri\UriFactory::detectQuery
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromParts
+
+
+
+
+
+
+
+
 	 */
 	public function testCreateFromSuperGlobalArrayHostWithColon(){
 		$factory = new UriFactory();
@@ -321,7 +321,7 @@ class UriFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\UriFactory::createFromAbsolute
+
 	 */
 	public function testCreateFromAbsolute(){
 		$factory = new UriFactory();

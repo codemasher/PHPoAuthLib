@@ -17,7 +17,7 @@ use OAuthTest\Mocks\MockOAuth1Service;
 class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$service = $this->getMockForAbstractClass(
@@ -35,7 +35,7 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::__construct
+
 	 */
 	public function testConstructCorrectParent(){
 		$service = $this->getMockForAbstractClass(
@@ -53,14 +53,14 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::requestRequestToken
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::buildAuthorizationHeaderForTokenRequest
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getBasicAuthorizationHeaderInfo
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::generateNonce
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getSignatureMethod
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getVersion
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getExtraOAuthHeaders
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::parseRequestTokenResponse
+
+
+
+
+
+
+
+
 	 */
 	public function testRequestRequestTokenBuildAuthHeaderTokenRequestWithoutParams(){
 		$client = $this->getMock(ClientInterface::class);
@@ -85,8 +85,8 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getAuthorizationUri
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationUriWithoutParameters(){
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
@@ -101,8 +101,8 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getAuthorizationUri
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationUriWithParameters(){
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
@@ -124,16 +124,16 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::requestAccessToken
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::service
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::buildAuthorizationHeaderForAPIRequest
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getBasicAuthorizationHeaderInfo
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::generateNonce
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getSignatureMethod
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getVersion
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getAccessTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getExtraOAuthHeaders
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::parseAccessTokenResponse
+
+
+
+
+
+
+
+
+
+
 	 */
 	public function testRequestAccessTokenWithoutSecret(){
 		$client = $this->getMock(ClientInterface::class);
@@ -164,16 +164,16 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::requestAccessToken
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::service
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::buildAuthorizationHeaderForAPIRequest
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getBasicAuthorizationHeaderInfo
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::generateNonce
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getSignatureMethod
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getVersion
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getAccessTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getExtraOAuthHeaders
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::parseAccessTokenResponse
+
+
+
+
+
+
+
+
+
+
 	 */
 	public function testRequestAccessTokenWithSecret(){
 		$client = $this->getMock(ClientInterface::class);
@@ -203,15 +203,15 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::request
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::determineRequestUriFromPath
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::service
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getExtraApiHeaders
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::buildAuthorizationHeaderForAPIRequest
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getBasicAuthorizationHeaderInfo
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::generateNonce
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getSignatureMethod
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::getVersion
+
+
+
+
+
+
+
+
+
 	 */
 	public function testRequest(){
 		$client = $this->getMock(ClientInterface::class);
@@ -237,7 +237,7 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	/**
 	 * This test only captures a regression in php 5.3.
 	 *
-	 * @covers OAuth\OAuth1\Service\AbstractServiceOauth1::request
+
 	 */
 	public function testRequestNonArrayBody(){
 		$client = $this->getMock(ClientInterface::class);

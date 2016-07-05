@@ -8,7 +8,7 @@ use OAuth\_killme\CredentialsInterface;
 class CredentialsTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\Common\Consumer\Credentials::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$credentials = new Credentials('foo', 'bar', 'baz');
@@ -17,8 +17,8 @@ class CredentialsTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Consumer\Credentials::__construct
-	 * @covers OAuth\Common\Consumer\Credentials::getConsumerId
+
+
 	 */
 	public function testGetConsumerId(){
 		$credentials = new Credentials('foo', 'bar', 'baz');
@@ -27,8 +27,8 @@ class CredentialsTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Consumer\Credentials::__construct
-	 * @covers OAuth\Common\Consumer\Credentials::getConsumerSecret
+
+
 	 */
 	public function testGetConsumerSecret(){
 		$credentials = new Credentials('foo', 'bar', 'baz');
@@ -37,8 +37,8 @@ class CredentialsTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Consumer\Credentials::__construct
-	 * @covers OAuth\Common\Consumer\Credentials::getCallbackUrl
+
+
 	 */
 	public function testGetCallbackUrl(){
 		$credentials = new Credentials('foo', 'bar', 'baz');

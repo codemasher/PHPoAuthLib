@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class BitlyTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Bitly(
@@ -30,7 +30,7 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Bitly(
@@ -43,7 +43,7 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Bitly(
@@ -58,8 +58,8 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
-	 * @covers OAuth\OAuth2\Service\Bitly::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Bitly(
@@ -72,8 +72,8 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
-	 * @covers OAuth\OAuth2\Service\Bitly::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Bitly(
@@ -86,8 +86,8 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
-	 * @covers OAuth\OAuth2\Service\Bitly::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -113,8 +113,8 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
-	 * @covers OAuth\OAuth2\Service\Bitly::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -132,9 +132,9 @@ class BitlyTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Bitly::__construct
-	 * @covers OAuth\OAuth2\Service\Bitly::parseAccessTokenResponse
-	 * @covers OAuth\OAuth2\Service\Bitly::requestAccessToken
+
+
+
 	 */
 	public function testParseAccessTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);

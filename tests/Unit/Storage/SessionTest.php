@@ -11,7 +11,7 @@ use OAuth\Token\TokenInterface;
 class SessionTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -22,7 +22,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -35,7 +35,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -48,7 +48,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -63,8 +63,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -78,8 +78,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -95,10 +95,10 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
-	 * @covers OAuth\Common\Storage\Session::retrieveAccessToken
-	 * @covers OAuth\Common\Storage\Session::hasAccessToken
+
+
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -111,9 +111,9 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::retrieveAccessToken
-	 * @covers OAuth\Common\Storage\Session::hasAccessToken
+
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -126,9 +126,9 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
-	 * @covers OAuth\Common\Storage\Session::hasAccessToken
+
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -141,8 +141,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::hasAccessToken
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -153,8 +153,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::clearToken
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -165,9 +165,9 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
-	 * @covers OAuth\Common\Storage\Session::clearToken
+
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -182,9 +182,9 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
-	 * @covers OAuth\Common\Storage\Session::clearAllTokens
+
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -202,8 +202,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::__construct
-	 * @covers OAuth\Common\Storage\Session::__destruct
+
+
 	 *
 	 * @runInSeparateProcess
 	 */
@@ -214,8 +214,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Session::storeAccessToken
-	 * @covers OAuth\Common\Storage\Session::retrieveAccessToken
+
+
 	 *
 	 * @runInSeparateProcess
 	 */

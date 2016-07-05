@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new EveOnline(
@@ -30,7 +30,7 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new EveOnline(
@@ -43,7 +43,7 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new EveOnline(
@@ -58,8 +58,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new EveOnline(
@@ -75,8 +75,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new EveOnline(
@@ -92,8 +92,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -119,8 +119,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -138,8 +138,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnErrorDescription(){
 		$client = $this->getMock(ClientInterface::class);
@@ -157,8 +157,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -176,8 +176,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -193,8 +193,8 @@ class EveOnlineTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\EveOnline::__construct
-	 * @covers OAuth\OAuth2\Service\EveOnline::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

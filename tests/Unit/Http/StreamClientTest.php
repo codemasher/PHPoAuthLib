@@ -20,7 +20,7 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
+
 	 */
 	public function testRetrieveResponseThrowsExceptionOnGetRequestWithBody(){
 		$this->setExpectedException(InvalidArgumentException::class);
@@ -36,7 +36,7 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
+
 	 */
 	public function testRetrieveResponseThrowsExceptionOnGetRequestWithBodyMethodConvertedToUpper(){
 		$this->setExpectedException(InvalidArgumentException::class);
@@ -52,8 +52,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponseDefaultUserAgent(){
 		$endPoint = $this->getMock(Uri::class);
@@ -81,8 +81,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponseCustomUserAgent(){
 		$endPoint = $this->getMock(Uri::class);
@@ -110,8 +110,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponseWithCustomContentType(){
 		$endPoint = $this->getMock(Uri::class);
@@ -139,8 +139,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponseWithFormUrlEncodedContentType(){
 		$endPoint = $this->getMock(Uri::class);
@@ -169,8 +169,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponseHost(){
 		$endPoint = $this->getMock(Uri::class);
@@ -198,8 +198,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponsePostRequestWithRequestBodyAsString(){
 		$endPoint = $this->getMock(Uri::class);
@@ -229,8 +229,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponsePutRequestWithRequestBodyAsString(){
 		$endPoint = $this->getMock(Uri::class);
@@ -260,8 +260,8 @@ class StreamClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\StreamClient::retrieveResponse
-	 * @covers OAuth\Common\Http\Client\StreamClient::generateStreamContext
+
+
 	 */
 	public function testRetrieveResponseThrowsExceptionOnInvalidRequest(){
 		$this->setExpectedException(TokenResponseException::class);

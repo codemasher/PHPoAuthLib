@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new DeviantArt(
@@ -30,7 +30,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new DeviantArt(
@@ -43,7 +43,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new DeviantArt(
@@ -58,8 +58,8 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
-	 * @covers OAuth\OAuth2\Service\DeviantArt::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new DeviantArt(
@@ -72,8 +72,8 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
-	 * @covers OAuth\OAuth2\Service\DeviantArt::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new DeviantArt(
@@ -86,7 +86,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -112,8 +112,8 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
-	 * @covers OAuth\OAuth2\Service\DeviantArt::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -131,8 +131,8 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
-	 * @covers OAuth\OAuth2\Service\DeviantArt::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -148,8 +148,8 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\DeviantArt::__construct
-	 * @covers OAuth\OAuth2\Service\DeviantArt::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

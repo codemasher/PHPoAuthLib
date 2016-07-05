@@ -15,7 +15,7 @@ use OAuth\Token\OAuth2Token;
 class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new SoundCloud(
@@ -28,7 +28,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new SoundCloud(
@@ -41,7 +41,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new SoundCloud(
@@ -56,8 +56,8 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
-	 * @covers OAuth\OAuth2\Service\SoundCloud::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new SoundCloud(
@@ -70,8 +70,8 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
-	 * @covers OAuth\OAuth2\Service\SoundCloud::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new SoundCloud(
@@ -84,8 +84,8 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
-	 * @covers OAuth\OAuth2\Service\SoundCloud::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -103,8 +103,8 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
-	 * @covers OAuth\OAuth2\Service\SoundCloud::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -122,8 +122,8 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
-	 * @covers OAuth\OAuth2\Service\SoundCloud::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -139,8 +139,8 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\SoundCloud::__construct
-	 * @covers OAuth\OAuth2\Service\SoundCloud::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

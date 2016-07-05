@@ -15,7 +15,7 @@ use OAuth\Token\OAuth2Token;
 class VkontakteTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Vkontakte(
@@ -28,7 +28,7 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Vkontakte(
@@ -41,7 +41,7 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Vkontakte(
@@ -56,8 +56,8 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
-	 * @covers OAuth\OAuth2\Service\Vkontakte::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Vkontakte(
@@ -70,8 +70,8 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
-	 * @covers OAuth\OAuth2\Service\Vkontakte::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Vkontakte(
@@ -84,8 +84,8 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
-	 * @covers OAuth\OAuth2\Service\Vkontakte::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -103,8 +103,8 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
-	 * @covers OAuth\OAuth2\Service\Vkontakte::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -122,8 +122,8 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
-	 * @covers OAuth\OAuth2\Service\Vkontakte::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -139,8 +139,8 @@ class VkontakteTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Vkontakte::__construct
-	 * @covers OAuth\OAuth2\Service\Vkontakte::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

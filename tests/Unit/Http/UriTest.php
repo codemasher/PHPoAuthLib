@@ -8,7 +8,7 @@ use OAuth\Http\Uri;
 class UriTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutUri(){
 		$uri = new Uri();
@@ -17,8 +17,8 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
+
+
 	 */
 	public function testConstructThrowsExceptionOnInvalidUri(){
 		$this->setExpectedException(InvalidArgumentException::class);
@@ -28,8 +28,8 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
+
+
 	 */
 	public function testConstructThrowsExceptionOnUriWithoutScheme(){
 		$this->setExpectedException(InvalidArgumentException::class);
@@ -38,9 +38,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getScheme
+
+
+
 	 */
 	public function testGetScheme(){
 		$uri = new Uri('http://example.com');
@@ -49,11 +49,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getUserInfo
+
+
+
+
+
 	 */
 	public function testGetUserInfo(){
 		$uri = new Uri('http://peehaa@example.com');
@@ -62,11 +62,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getUserInfo
+
+
+
+
+
 	 */
 	public function testGetUserInfoWithPass(){
 		$uri = new Uri('http://peehaa:pass@example.com');
@@ -75,11 +75,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawUserInfo
+
+
+
+
+
 	 */
 	public function testGetRawUserInfo(){
 		$uri = new Uri('http://peehaa@example.com');
@@ -88,11 +88,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawUserInfo
+
+
+
+
+
 	 */
 	public function testGetRawUserInfoWithPass(){
 		$uri = new Uri('http://peehaa:pass@example.com');
@@ -101,9 +101,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getHost
+
+
+
 	 */
 	public function testGetHost(){
 		$uri = new Uri('http://example.com');
@@ -112,9 +112,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getPort
+
+
+
 	 */
 	public function testGetPortImplicitHttp(){
 		$uri = new Uri('http://example.com');
@@ -123,9 +123,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getPort
+
+
+
 	 */
 	public function testGetPortImplicitHttps(){
 		$uri = new Uri('https://example.com');
@@ -134,9 +134,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getPort
+
+
+
 	 */
 	public function testGetPortExplicit(){
 		$uri = new Uri('http://example.com:21');
@@ -145,9 +145,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getPath
+
+
+
 	 */
 	public function testGetPathNotSupplied(){
 		$uri = new Uri('http://example.com');
@@ -156,9 +156,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getPath
+
+
+
 	 */
 	public function testGetPathSlash(){
 		$uri = new Uri('http://example.com/');
@@ -167,9 +167,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getPath
+
+
+
 	 */
 	public function testGetPath(){
 		$uri = new Uri('http://example.com/foo');
@@ -178,9 +178,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getQuery
+
+
+
 	 */
 	public function testGetQueryWithParams(){
 		$uri = new Uri('http://example.com?param1=first&param2=second');
@@ -189,9 +189,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getQuery
+
+
+
 	 */
 	public function testGetQueryWithoutParams(){
 		$uri = new Uri('http://example.com');
@@ -200,9 +200,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getFragment
+
+
+
 	 */
 	public function testGetFragmentExists(){
 		$uri = new Uri('http://example.com#foo');
@@ -211,9 +211,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getFragment
+
+
+
 	 */
 	public function testGetFragmentNotExists(){
 		$uri = new Uri('http://example.com');
@@ -222,9 +222,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAuthority
+
+
+
 	 */
 	public function testGetAuthorityWithoutUserInfo(){
 		$uri = new Uri('http://example.com');
@@ -233,9 +233,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAuthority
+
+
+
 	 */
 	public function testGetAuthorityWithoutUserInfoWithExplicitPort(){
 		$uri = new Uri('http://example.com:21');
@@ -244,11 +244,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getAuthority
+
+
+
+
+
 	 */
 	public function testGetAuthorityWithUsernameWithExplicitPort(){
 		$uri = new Uri('http://peehaa@example.com:21');
@@ -257,11 +257,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getAuthority
+
+
+
+
+
 	 */
 	public function testGetAuthorityWithUsernameAndPassWithExplicitPort(){
 		$uri = new Uri('http://peehaa:pass@example.com:21');
@@ -270,11 +270,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getAuthority
+
+
+
+
+
 	 */
 	public function testGetAuthorityWithUsernameAndPassWithoutExplicitPort(){
 		$uri = new Uri('http://peehaa:pass@example.com');
@@ -283,9 +283,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
+
+
+
 	 */
 	public function testGetRawAuthorityWithoutUserInfo(){
 		$uri = new Uri('http://example.com');
@@ -294,9 +294,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
+
+
+
 	 */
 	public function testGetRawAuthorityWithoutUserInfoWithExplicitPort(){
 		$uri = new Uri('http://example.com:21');
@@ -305,11 +305,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
+
+
+
+
+
 	 */
 	public function testGetRawAuthorityWithUsernameWithExplicitPort(){
 		$uri = new Uri('http://peehaa@example.com:21');
@@ -318,11 +318,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
+
+
+
+
+
 	 */
 	public function testGetRawAuthorityWithUsernameAndPassWithExplicitPort(){
 		$uri = new Uri('http://peehaa:pass@example.com:21');
@@ -331,11 +331,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
+
+
+
+
+
 	 */
 	public function testGetRawAuthorityWithUsernameAndPassWithoutExplicitPort(){
 		$uri = new Uri('http://peehaa:pass@example.com');
@@ -344,9 +344,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
 	 */
 	public function testGetAbsoluteUriBare(){
 		$uri = new Uri('http://example.com');
@@ -355,12 +355,12 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
+
+
 	 */
 	public function testGetAbsoluteUriWithAuthority(){
 		$uri = new Uri('http://peehaa:pass@example.com');
@@ -369,9 +369,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
 	 */
 	public function testGetAbsoluteUriWithPath(){
 		$uri = new Uri('http://example.com/foo');
@@ -380,9 +380,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
 	 */
 	public function testGetAbsoluteUriWithoutPath(){
 		$uri = new Uri('http://example.com');
@@ -391,9 +391,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
 	 */
 	public function testGetAbsoluteUriWithoutPathExplicitTrailingSlash(){
 		$uri = new Uri('http://example.com/');
@@ -402,9 +402,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
 	 */
 	public function testGetAbsoluteUriWithQuery(){
 		$uri = new Uri('http://example.com?param1=value1');
@@ -413,9 +413,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
 	 */
 	public function testGetAbsoluteUriWithFragment(){
 		$uri = new Uri('http://example.com#foo');
@@ -424,9 +424,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getRelativeUri
+
+
+
 	 */
 	public function testGetRelativeUriWithoutPath(){
 		$uri = new Uri('http://example.com');
@@ -435,9 +435,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getRelativeUri
+
+
+
 	 */
 	public function testGetRelativeUriWithPath(){
 		$uri = new Uri('http://example.com/foo');
@@ -446,9 +446,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::getRelativeUri
+
+
+
 	 */
 	public function testGetRelativeUriWithExplicitTrailingSlash(){
 		$uri = new Uri('http://example.com/');
@@ -457,9 +457,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
 	 */
 	public function testToStringBare(){
 		$uri = new Uri('http://example.com');
@@ -468,12 +468,12 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getRawAuthority
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
+
+
+
 	 */
 	public function testToStringWithAuthority(){
 		$uri = new Uri('http://peehaa:pass@example.com');
@@ -482,9 +482,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
 	 */
 	public function testToStringWithPath(){
 		$uri = new Uri('http://example.com/foo');
@@ -493,9 +493,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
 	 */
 	public function testToStringWithoutPath(){
 		$uri = new Uri('http://example.com');
@@ -504,9 +504,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
 	 */
 	public function testToStringWithoutPathExplicitTrailingSlash(){
 		$uri = new Uri('http://example.com/');
@@ -515,9 +515,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
 	 */
 	public function testToStringWithQuery(){
 		$uri = new Uri('http://example.com?param1=value1');
@@ -526,9 +526,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::__toString
+
+
+
 	 */
 	public function testToStringWithFragment(){
 		$uri = new Uri('http://example.com#foo');
@@ -537,10 +537,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPath
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPathEmpty(){
 		$uri = new Uri('http://example.com');
@@ -550,10 +550,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPath
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPathWithPath(){
 		$uri = new Uri('http://example.com');
@@ -563,10 +563,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPath
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPathWithOnlySlash(){
 		$uri = new Uri('http://example.com');
@@ -576,10 +576,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setQuery
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetQueryEmpty(){
 		$uri = new Uri('http://example.com');
@@ -589,10 +589,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setQuery
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetQueryFilled(){
 		$uri = new Uri('http://example.com');
@@ -602,10 +602,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::addToQuery
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testAddToQueryAppend(){
 		$uri = new Uri('http://example.com?param1=value1');
@@ -615,10 +615,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::addToQuery
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testAddToQueryCreate(){
 		$uri = new Uri('http://example.com');
@@ -628,10 +628,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setFragment
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetFragmentEmpty(){
 		$uri = new Uri('http://example.com');
@@ -641,10 +641,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setFragment
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetFragmentWithData(){
 		$uri = new Uri('http://example.com');
@@ -654,10 +654,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setScheme
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetSchemeWithEmpty(){
 		$uri = new Uri('http://example.com');
@@ -667,10 +667,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setScheme
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetSchemeWithData(){
 		$uri = new Uri('http://example.com');
@@ -680,10 +680,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetUserInfoEmpty(){
 		$uri = new Uri('http://example.com');
@@ -693,11 +693,11 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::protectUserInfo
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
+
 	 */
 	public function testSetUserInfoWithData(){
 		$uri = new Uri('http://example.com');
@@ -707,10 +707,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPort
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPortCustom(){
 		$uri = new Uri('http://example.com');
@@ -720,10 +720,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPort
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPortHttpImplicit(){
 		$uri = new Uri('http://example.com');
@@ -733,10 +733,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPort
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPortHttpsImplicit(){
 		$uri = new Uri('https://example.com');
@@ -746,10 +746,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPort
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPortHttpExplicit(){
 		$uri = new Uri('http://example.com');
@@ -759,10 +759,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setPort
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetPortHttpsExplicit(){
 		$uri = new Uri('https://example.com');
@@ -772,10 +772,10 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::setHost
-	 * @covers OAuth\Common\Http\Uri\Uri::getAbsoluteUri
+
+
+
+
 	 */
 	public function testSetHost(){
 		$uri = new Uri('http://example.com');
@@ -785,9 +785,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::hasExplicitTrailingHostSlash
+
+
+
 	 */
 	public function testHasExplicitTrailingHostSlashTrue(){
 		$uri = new Uri('http://example.com/');
@@ -796,9 +796,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::hasExplicitTrailingHostSlash
+
+
+
 	 */
 	public function testHasExplicitTrailingHostSlashFalse(){
 		$uri = new Uri('http://example.com/foo');
@@ -807,9 +807,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::hasExplicitPortSpecified
+
+
+
 	 */
 	public function testHasExplicitPortSpecifiedTrue(){
 		$uri = new Uri('http://example.com:8080');
@@ -818,9 +818,9 @@ class UriTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Uri\Uri::__construct
-	 * @covers OAuth\Common\Http\Uri\Uri::parseUri
-	 * @covers OAuth\Common\Http\Uri\Uri::hasExplicitPortSpecified
+
+
+
 	 */
 	public function testHasExplicitPortSpecifiedFalse(){
 		$uri = new Uri('http://example.com');

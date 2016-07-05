@@ -11,7 +11,7 @@ use OAuth\Service\SignatureInterface;
 class SignatureTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$signature = new Signature($this->getMock(CredentialsInterface::class));
@@ -20,8 +20,8 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
+
+
 	 */
 	public function testSetHashingAlgorithm(){
 		$signature = new Signature($this->getMock(CredentialsInterface::class));
@@ -30,8 +30,8 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
+
+
 	 */
 	public function testSetTokenSecret(){
 		$signature = new Signature($this->getMock(CredentialsInterface::class));
@@ -40,13 +40,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureBareUri(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -82,13 +82,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureWithQueryString(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -124,13 +124,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureWithAuthority(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -166,13 +166,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureWithBarePathNonExplicitTrailingHostSlash(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -212,13 +212,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureWithBarePathWithExplicitTrailingHostSlash(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -258,13 +258,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureNoTokenSecretSet(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -303,13 +303,13 @@ class SignatureTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Signature\Signature::__construct
-	 * @covers OAuth\OAuth1\Signature\Signature::setHashingAlgorithm
-	 * @covers OAuth\OAuth1\Signature\Signature::setTokenSecret
-	 * @covers OAuth\OAuth1\Signature\Signature::getSignature
-	 * @covers OAuth\OAuth1\Signature\Signature::buildSignatureDataString
-	 * @covers OAuth\OAuth1\Signature\Signature::hash
-	 * @covers OAuth\OAuth1\Signature\Signature::getSigningKey
+
+
+
+
+
+
+
 	 */
 	public function testGetSignatureThrowsExceptionOnUnsupportedAlgo(){
 		$this->setExpectedException(UnsupportedHashAlgorithmException::class);

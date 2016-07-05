@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class PaypalTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Paypal(
@@ -30,7 +30,7 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Paypal(
@@ -43,7 +43,7 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Paypal(
@@ -58,8 +58,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Paypal(
@@ -75,8 +75,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Paypal(
@@ -92,8 +92,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -119,8 +119,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -138,8 +138,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnMessage(){
 		$client = $this->getMock(ClientInterface::class);
@@ -157,8 +157,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnName(){
 		$client = $this->getMock(ClientInterface::class);
@@ -176,8 +176,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -193,8 +193,8 @@ class PaypalTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Paypal::__construct
-	 * @covers OAuth\OAuth2\Service\Paypal::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

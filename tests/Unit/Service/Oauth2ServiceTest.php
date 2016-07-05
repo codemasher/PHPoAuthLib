@@ -18,7 +18,7 @@ use OAuthTest\Mocks\MockOAuth2Service;
 class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$service = $this->getMockForAbstractClass(
@@ -35,7 +35,7 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
+
 	 */
 	public function testConstructCorrectParent(){
 		$service = $this->getMockForAbstractClass(
@@ -52,7 +52,7 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
+
 	 */
 	public function testConstructCorrectParentCustomUri(){
 		$service = $this->getMockForAbstractClass(
@@ -70,8 +70,8 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::isValidScope
+
+
 	 */
 	public function testConstructThrowsExceptionOnInvalidScope(){
 		$this->setExpectedException(InvalidScopeException::class);
@@ -85,9 +85,9 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationUri
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationEndpoint
+
+
+
 	 */
 	public function testGetAuthorizationUriWithoutParametersOrScopes(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -107,9 +107,9 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationUri
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationEndpoint
+
+
+
 	 */
 	public function testGetAuthorizationUriWithParametersWithoutScopes(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -129,10 +129,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::isValidScope
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationUri
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationEndpoint
+
+
+
+
 	 */
 	public function testGetAuthorizationUriWithParametersAndScopes(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -153,12 +153,12 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::requestAccessToken
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAccessTokenEndpoint
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getExtraOAuthHeaders
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::parseAccessTokenResponse
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::service
+
+
+
+
+
+
 	 */
 	public function testRequestAccessToken(){
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
@@ -171,9 +171,9 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::request
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::determineRequestUriFromPath
+
+
+
 	 */
 	public function testRequestThrowsExceptionWhenTokenIsExpired(){
 		$tokenExpiration = new \DateTime('26-03-1984 00:00:00');
@@ -196,13 +196,13 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::request
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::determineRequestUriFromPath
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationMethod
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::parseAccessTokenResponse
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::service
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getExtraApiHeaders
+
+
+
+
+
+
+
 	 */
 	public function testRequestOauthAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -228,13 +228,13 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::request
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::determineRequestUriFromPath
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationMethod
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::parseAccessTokenResponse
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::service
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getExtraApiHeaders
+
+
+
+
+
+
+
 	 */
 	public function testRequestQueryStringMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -262,13 +262,13 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::request
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::determineRequestUriFromPath
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationMethod
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::parseAccessTokenResponse
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::service
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getExtraApiHeaders
+
+
+
+
+
+
+
 	 */
 	public function testRequestQueryStringTwoMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -296,13 +296,13 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::request
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::determineRequestUriFromPath
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAuthorizationMethod
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::parseAccessTokenResponse
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::service
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getExtraApiHeaders
+
+
+
+
+
+
+
 	 */
 	public function testRequestBearerMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -330,8 +330,8 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getStorage
+
+
 	 */
 	public function testGetStorage(){
 		$service = new MockOAuth2Service(
@@ -344,11 +344,11 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::refreshAccessToken
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getAccessTokenEndpoint
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::getExtraOAuthHeaders
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::parseAccessTokenResponse
+
+
+
+
+
 	 */
 	public function testRefreshAccessTokenSuccess(){
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
@@ -364,8 +364,8 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::isValidScope
+
+
 	 */
 	public function testIsValidScopeTrue(){
 		$service = new MockOAuth2Service(
@@ -378,8 +378,8 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::__construct
-	 * @covers OAuth\OAuth2\Service\AbstractServiceOauth2::isValidScope
+
+
 	 */
 	public function testIsValidScopeFalse(){
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(

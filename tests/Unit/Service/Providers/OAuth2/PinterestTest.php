@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class PinterestTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Pinterest(
@@ -30,7 +30,7 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Pinterest(
@@ -43,7 +43,7 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Pinterest(
@@ -58,8 +58,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Pinterest(
@@ -75,8 +75,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Pinterest(
@@ -92,8 +92,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -119,8 +119,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -138,8 +138,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnErrorDescription(){
 		$client = $this->getMock(ClientInterface::class);
@@ -157,8 +157,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -176,8 +176,8 @@ class PinterestTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Pinterest::__construct
-	 * @covers OAuth\OAuth2\Service\Pinterest::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);

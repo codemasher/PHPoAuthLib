@@ -17,7 +17,7 @@ use OAuth\Token\OAuth1TokenInterface;
 class YahooTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Yahoo(
@@ -31,7 +31,7 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Yahoo(
@@ -45,7 +45,7 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Yahoo(
@@ -60,8 +60,8 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
+
+
 	 */
 	public function testGetRequestTokenEndpoint(){
 		$service = new Yahoo(
@@ -78,8 +78,8 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Yahoo(
@@ -96,8 +96,8 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Yahoo(
@@ -114,9 +114,9 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -135,9 +135,9 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseNotAnArray(){
 		$client = $this->getMock(ClientInterface::class);
@@ -156,9 +156,9 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotSet(){
 		$client = $this->getMock(ClientInterface::class);
@@ -177,9 +177,9 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotTrue(){
 		$client = $this->getMock(ClientInterface::class);
@@ -203,10 +203,10 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseRequestTokenResponse
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseAccessTokenResponse
+
+
+
+
 	 */
 	public function testParseRequestTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -228,9 +228,9 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -254,9 +254,9 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::__construct
-	 * @covers OAuth\OAuth1\Service\Yahoo::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Yahoo::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -283,7 +283,7 @@ class YahooTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Yahoo::request
+
 	 */
 	public function testRequest(){
 		$client = $this->getMock(ClientInterface::class);

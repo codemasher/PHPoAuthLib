@@ -14,7 +14,7 @@ use OAuthTest\Mocks\MockServiceAbstract;
 class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$service = $this->getMockForAbstractClass(
@@ -30,8 +30,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::getStorage
+
+
 	 */
 	public function testGetStorage(){
 		$service = $this->getMockForAbstractClass(
@@ -47,8 +47,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::service
+
+
 	 */
 	public function testService(){
 		$service = new MockServiceAbstract(
@@ -61,8 +61,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::determineRequestUriFromPath
+
+
 	 */
 	public function testDetermineRequestUriFromPathUsingUriObject(){
 		$service = new MockServiceAbstract(
@@ -78,8 +78,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::determineRequestUriFromPath
+
+
 	 */
 	public function testDetermineRequestUriFromPathUsingHttpPath(){
 		$service = new \OAuthTest\Mocks\MockServiceAbstract(
@@ -95,8 +95,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::determineRequestUriFromPath
+
+
 	 */
 	public function testDetermineRequestUriFromPathUsingHttpsPath(){
 		$service = new \OAuthTest\Mocks\MockServiceAbstract(
@@ -112,8 +112,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::determineRequestUriFromPath
+
+
 	 */
 	public function testDetermineRequestUriFromPathThrowsExceptionOnInvalidUri(){
 		$this->setExpectedException(OauthException::class);
@@ -128,8 +128,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::determineRequestUriFromPath
+
+
 	 */
 	public function testDetermineRequestUriFromPathWithQueryString(){
 		$service = new MockServiceAbstract(
@@ -148,8 +148,8 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Service\AbstractService::__construct
-	 * @covers OAuth\Common\Service\AbstractService::determineRequestUriFromPath
+
+
 	 */
 	public function testDetermineRequestUriFromPathWithLeadingSlashInPath(){
 		$service = new MockServiceAbstract(

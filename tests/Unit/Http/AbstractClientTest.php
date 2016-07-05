@@ -8,7 +8,7 @@ use OAuth\Http\ClientInterface;
 class AbstractClientTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$client = $this->getMockForAbstractClass(AbstractHttpClient::class);
@@ -17,8 +17,8 @@ class AbstractClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::__construct
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::setMaxRedirects
+
+
 	 */
 	public function testSetMaxRedirects(){
 		$client = $this->getMockForAbstractClass(AbstractHttpClient::class);
@@ -28,8 +28,8 @@ class AbstractClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::__construct
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::setTimeout
+
+
 	 */
 	public function testSetTimeout(){
 		$client = $this->getMockForAbstractClass(AbstractHttpClient::class);
@@ -39,8 +39,8 @@ class AbstractClientTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::__construct
-	 * @covers OAuth\Common\Http\Client\AbstractHttpClient::normalizeHeaders
+
+
 	 */
 	public function testNormalizeHeaders(){
 		$client = $this->getMockForAbstractClass(AbstractHttpClient::class);

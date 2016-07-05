@@ -17,7 +17,7 @@ use OAuth\Token\OAuth1TokenInterface;
 class TumblrTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Tumblr(
@@ -31,7 +31,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Tumblr(
@@ -45,7 +45,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Tumblr(
@@ -60,8 +60,8 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
+
+
 	 */
 	public function testGetRequestTokenEndpoint(){
 		$service = new Tumblr(
@@ -78,8 +78,8 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Tumblr(
@@ -96,8 +96,8 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Tumblr(
@@ -114,9 +114,9 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -135,9 +135,9 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseNotAnArray(){
 		$client = $this->getMock(ClientInterface::class);
@@ -156,9 +156,9 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotSet(){
 		$client = $this->getMock(ClientInterface::class);
@@ -177,9 +177,9 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotTrue(){
 		$client = $this->getMock(ClientInterface::class);
@@ -203,10 +203,10 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseRequestTokenResponse
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseAccessTokenResponse
+
+
+
+
 	 */
 	public function testParseRequestTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -228,9 +228,9 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -254,9 +254,9 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Tumblr::__construct
-	 * @covers OAuth\OAuth1\Service\Tumblr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Tumblr::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);

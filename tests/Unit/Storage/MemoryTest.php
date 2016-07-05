@@ -10,7 +10,7 @@ use OAuth\Token\TokenInterface;
 class MemoryTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
+
 	 */
 	public function testConstructCorrectInterface(){
 		$storage = new Memory();
@@ -19,8 +19,8 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::storeAccessToken
+
+
 	 */
 	public function testStoreAccessToken(){
 		$storage = new Memory();
@@ -32,10 +32,10 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::storeAccessToken
-	 * @covers OAuth\Common\Storage\Memory::retrieveAccessToken
-	 * @covers OAuth\Common\Storage\Memory::hasAccessToken
+
+
+
+
 	 */
 	public function testRetrieveAccessTokenValid(){
 		$storage = new Memory();
@@ -46,9 +46,9 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::retrieveAccessToken
-	 * @covers OAuth\Common\Storage\Memory::hasAccessToken
+
+
+
 	 */
 	public function testRetrieveAccessTokenThrowsExceptionWhenTokenIsNotFound(){
 		$this->setExpectedException(TokenNotFoundException::class);
@@ -59,9 +59,9 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::storeAccessToken
-	 * @covers OAuth\Common\Storage\Memory::hasAccessToken
+
+
+
 	 */
 	public function testHasAccessTokenTrue(){
 		$storage = new Memory();
@@ -72,8 +72,8 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::hasAccessToken
+
+
 	 */
 	public function testHasAccessTokenFalse(){
 		$storage = new Memory();
@@ -82,8 +82,8 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::clearToken
+
+
 	 */
 	public function testClearTokenIsNotSet(){
 		$storage = new Memory();
@@ -92,9 +92,9 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::storeAccessToken
-	 * @covers OAuth\Common\Storage\Memory::clearToken
+
+
+
 	 */
 	public function testClearTokenSet(){
 		$storage = new Memory();
@@ -107,9 +107,9 @@ class MemoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\Common\Storage\Memory::__construct
-	 * @covers OAuth\Common\Storage\Memory::storeAccessToken
-	 * @covers OAuth\Common\Storage\Memory::clearAllTokens
+
+
+
 	 */
 	public function testClearAllTokens(){
 		$storage = new Memory();

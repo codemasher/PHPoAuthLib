@@ -19,7 +19,7 @@ class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::setRequestToken
+
 	 */
 	public function testSetRequestToken(){
 		$token = new OAuth1Token();
@@ -28,8 +28,8 @@ class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::setRequestToken
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::getRequestToken
+
+
 	 */
 	public function testGetRequestToken(){
 		$token = new OAuth1Token();
@@ -39,7 +39,7 @@ class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::setRequestTokenSecret
+
 	 */
 	public function testSetRequestTokenSecret(){
 		$token = new OAuth1Token();
@@ -48,8 +48,8 @@ class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::setRequestTokenSecret
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::getRequestTokenSecret
+
+
 	 */
 	public function testGetRequestTokenSecret(){
 		$token = new OAuth1Token();
@@ -59,7 +59,7 @@ class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::setAccessTokenSecret
+
 	 */
 	public function testSetAccessTokenSecret(){
 		$token = new OAuth1Token();
@@ -68,8 +68,8 @@ class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::setAccessTokenSecret
-	 * @covers OAuth\OAuth1\Token\StdOAuth1Token::getAccessTokenSecret
+
+
 	 */
 	public function testGetAccessTokenSecret(){
 		$token = new OAuth1Token();

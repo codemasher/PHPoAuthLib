@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class AmazonTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Amazon(
@@ -30,7 +30,7 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Amazon(
@@ -43,7 +43,7 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Amazon(
@@ -58,8 +58,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Amazon(
@@ -72,8 +72,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Amazon(
@@ -86,8 +86,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -113,8 +113,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -132,8 +132,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnErrorDescription(){
 		$client = $this->getMock(ClientInterface::class);
@@ -151,8 +151,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -170,8 +170,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -187,8 +187,8 @@ class AmazonTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Amazon::__construct
-	 * @covers OAuth\OAuth2\Service\Amazon::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

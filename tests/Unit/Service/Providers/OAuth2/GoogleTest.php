@@ -15,7 +15,7 @@ use OAuth\Token\OAuth2Token;
 class GoogleTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Google(
@@ -28,7 +28,7 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Google(
@@ -41,7 +41,7 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Google(
@@ -56,8 +56,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Google(
@@ -81,8 +81,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpointException(){
 		$service = new Google(
@@ -103,8 +103,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Google(
@@ -120,8 +120,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -139,8 +139,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -158,8 +158,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -175,8 +175,8 @@ class GoogleTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Google::__construct
-	 * @covers OAuth\OAuth2\Service\Google::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

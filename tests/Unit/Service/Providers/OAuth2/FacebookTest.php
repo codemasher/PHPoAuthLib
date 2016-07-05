@@ -18,7 +18,7 @@ use OAuth\Token\TokenInterface;
 class FacebookTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Facebook(
@@ -31,7 +31,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Facebook(
@@ -44,7 +44,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Facebook(
@@ -59,8 +59,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Facebook(
@@ -73,8 +73,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Facebook(
@@ -87,7 +87,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -113,8 +113,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -132,8 +132,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -149,8 +149,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -166,8 +166,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::getDialogUri
+
+
 	 */
 	public function testGetDialogUriRedirectUriMissing(){
 		$client = $this->getMock(ClientInterface::class);
@@ -184,8 +184,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::getDialogUri
+
+
 	 */
 	public function testGetDialogUriInstanceofUri(){
 		$client = $this->getMock(ClientInterface::class);
@@ -207,8 +207,8 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Facebook::__construct
-	 * @covers OAuth\OAuth2\Service\Facebook::getDialogUri
+
+
 	 */
 	public function testGetDialogUriContainsAppIdAndOtherParameters(){
 		$client      = $this->getMock(ClientInterface::class);

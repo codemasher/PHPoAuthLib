@@ -25,7 +25,7 @@ use OAuthTest\Mocks\FakeOAuth2Service;
 class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\ServiceFactory::setHttpClient
+
 	 */
 	public function testSetHttpClient(){
 		$factory = new ServiceFactory();
@@ -37,7 +37,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
+
 	 */
 	public function testRegisterServiceThrowsExceptionNonExistentClass(){
 		$this->setExpectedException(OauthException::class);
@@ -47,7 +47,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
+
 	 */
 	public function testRegisterServiceThrowsExceptionWithClassIncorrectImplementation(){
 		$this->setExpectedException(OauthException::class);
@@ -57,7 +57,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
+
 	 */
 	public function testRegisterServiceSuccessOAuth1(){
 		$factory = new ServiceFactory();
@@ -69,7 +69,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
+
 	 */
 	public function testRegisterServiceSuccessOAuth2(){
 		$factory = new ServiceFactory();
@@ -81,9 +81,9 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV1Service
+
+
+
 	 */
 	public function testCreateServiceOAuth1NonRegistered(){
 		$factory = new ServiceFactory();
@@ -98,10 +98,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV1Service
+
+
+
+
 	 */
 	public function testCreateServiceOAuth1Registered(){
 		$factory = new ServiceFactory();
@@ -119,10 +119,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV1Service
+
+
+
+
 	 */
 	public function testCreateServiceOAuth1RegisteredAndNonRegisteredSameName(){
 		$factory = new ServiceFactory();
@@ -140,10 +140,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV2Service
-	 * @covers OAuth\ServiceFactory::resolveScopes
+
+
+
+
 	 */
 	public function testCreateServiceOAuth2NonRegistered(){
 		$factory = new ServiceFactory();
@@ -158,10 +158,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV2Service
-	 * @covers OAuth\ServiceFactory::resolveScopes
+
+
+
+
 	 */
 	public function testCreateServiceOAuth2Registered(){
 		$factory = new ServiceFactory();
@@ -179,10 +179,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV2Service
-	 * @covers OAuth\ServiceFactory::resolveScopes
+
+
+
+
 	 */
 	public function testCreateServiceOAuth2RegisteredAndNonRegisteredSameName(){
 		$factory = new ServiceFactory();
@@ -200,10 +200,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV1Service
+
+
+
+
 	 */
 	public function testCreateServiceThrowsExceptionOnPassingScopesToV1Service(){
 		$this->setExpectedException(OauthException::class);
@@ -221,8 +221,8 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
+
+
 	 */
 	public function testCreateServiceNonExistentService(){
 		$factory = new ServiceFactory();
@@ -237,11 +237,11 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::registerService
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV2Service
-	 * @covers OAuth\ServiceFactory::resolveScopes
+
+
+
+
+
 	 */
 	public function testCreateServicePrefersOauth2(){
 		$factory = new ServiceFactory();
@@ -260,10 +260,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV2Service
-	 * @covers OAuth\ServiceFactory::resolveScopes
+
+
+
+
 	 */
 	public function testCreateServiceOAuth2RegisteredWithClassConstantsAsScope(){
 		$factory = new ServiceFactory();
@@ -282,10 +282,10 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\ServiceFactory::createService
-	 * @covers OAuth\ServiceFactory::getFullyQualifiedServiceName
-	 * @covers OAuth\ServiceFactory::buildV2Service
-	 * @covers OAuth\ServiceFactory::resolveScopes
+
+
+
+
 	 */
 	public function testCreateServiceOAuth2RegisteredWithCustomScope(){
 		$factory = new ServiceFactory();

@@ -17,7 +17,7 @@ use OAuth\Token\OAuth1TokenInterface;
 class FlickrTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Flickr(
@@ -31,7 +31,7 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Flickr(
@@ -45,7 +45,7 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Flickr(
@@ -60,8 +60,8 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
+
+
 	 */
 	public function testGetRequestTokenEndpoint(){
 		$service = new Flickr(
@@ -78,8 +78,8 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Flickr(
@@ -96,8 +96,8 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Flickr(
@@ -114,9 +114,9 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -135,9 +135,9 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseNotAnArray(){
 		$client = $this->getMock(ClientInterface::class);
@@ -156,9 +156,9 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotSet(){
 		$client = $this->getMock(ClientInterface::class);
@@ -177,9 +177,9 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotTrue(){
 		$client = $this->getMock(ClientInterface::class);
@@ -203,10 +203,10 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseRequestTokenResponse
-	 * @covers OAuth\OAuth1\Service\Flickr::parseAccessTokenResponse
+
+
+
+
 	 */
 	public function testParseRequestTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -228,9 +228,9 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -254,9 +254,9 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::__construct
-	 * @covers OAuth\OAuth1\Service\Flickr::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Flickr::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -283,7 +283,7 @@ class FlickrTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Flickr::request
+
 	 */
 	public function testRequest(){
 		$client = $this->getMock(ClientInterface::class);

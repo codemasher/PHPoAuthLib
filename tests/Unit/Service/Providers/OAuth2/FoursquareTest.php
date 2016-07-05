@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class FoursquareTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Foursquare(
@@ -30,7 +30,7 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Foursquare(
@@ -43,7 +43,7 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Foursquare(
@@ -58,8 +58,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Foursquare(
@@ -72,8 +72,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Foursquare(
@@ -86,8 +86,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -113,8 +113,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -132,8 +132,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -151,8 +151,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -168,8 +168,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::request
+
+
 	 */
 	public function testRequest(){
 		$client = $this->getMock(ClientInterface::class);
@@ -195,8 +195,8 @@ class FoursquareTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Foursquare::__construct
-	 * @covers OAuth\OAuth2\Service\Foursquare::request
+
+
 	 */
 	public function testRequestShortPath(){
 		$client = $this->getMock(ClientInterface::class);

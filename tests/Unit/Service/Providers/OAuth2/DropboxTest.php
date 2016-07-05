@@ -17,7 +17,7 @@ use OAuth\Token\TokenInterface;
 class DropboxTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Dropbox(
@@ -30,7 +30,7 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Dropbox(
@@ -43,7 +43,7 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Dropbox(
@@ -58,8 +58,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::getAuthorizationUri
+
+
 	 */
 	public function testGetAuthorizationUriWithoutAdditionalParams(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -79,8 +79,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::getAuthorizationUri
+
+
 	 */
 	public function testGetAuthorizationUriWithAdditionalParams(){
 		$credentials = $this->getMock(CredentialsInterface::class);
@@ -100,8 +100,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Dropbox(
@@ -114,8 +114,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Dropbox(
@@ -128,8 +128,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::getAuthorizationMethod
+
+
 	 */
 	public function testGetAuthorizationMethod(){
 		$client = $this->getMock(ClientInterface::class);
@@ -155,8 +155,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -174,8 +174,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -193,8 +193,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithoutRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);
@@ -210,8 +210,8 @@ class DropboxTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth2\Service\Dropbox::__construct
-	 * @covers OAuth\OAuth2\Service\Dropbox::parseAccessTokenResponse
+
+
 	 */
 	public function testParseAccessTokenResponseValidWithRefreshToken(){
 		$client = $this->getMock(ClientInterface::class);

@@ -18,7 +18,7 @@ use OAuth\Token\OAuth1TokenInterface;
 class TwitterTest extends \PHPUnit_Framework_TestCase{
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
+
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Twitter(
@@ -32,7 +32,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Twitter(
@@ -46,7 +46,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
+
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Twitter(
@@ -61,8 +61,8 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
+
+
 	 */
 	public function testGetRequestTokenEndpoint(){
 		$service = new Twitter(
@@ -79,8 +79,8 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getAuthorizationEndpoint
+
+
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Twitter(
@@ -114,8 +114,8 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::setAuthorizationEndpoint
+
+
 	 */
 	public function testSetAuthorizationEndpoint(){
 		$service = new Twitter(
@@ -131,8 +131,8 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getAccessTokenEndpoint
+
+
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Twitter(
@@ -149,9 +149,9 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnNulledResponse(){
 		$client = $this->getMock(ClientInterface::class);
@@ -170,9 +170,9 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseNotAnArray(){
 		$client = $this->getMock(ClientInterface::class);
@@ -191,9 +191,9 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotSet(){
 		$client = $this->getMock(ClientInterface::class);
@@ -212,9 +212,9 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseRequestTokenResponse
+
+
+
 	 */
 	public function testParseRequestTokenResponseThrowsExceptionOnResponseCallbackNotTrue(){
 		$client = $this->getMock(ClientInterface::class);
@@ -238,10 +238,10 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseRequestTokenResponse
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
+
+
+
 	 */
 	public function testParseRequestTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -263,9 +263,9 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseThrowsExceptionOnError(){
 		$client = $this->getMock(ClientInterface::class);
@@ -289,9 +289,9 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::__construct
-	 * @covers OAuth\OAuth1\Service\Twitter::getRequestTokenEndpoint
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
+
+
 	 */
 	public function testParseAccessTokenResponseValid(){
 		$client = $this->getMock(ClientInterface::class);
@@ -318,7 +318,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
 	 */
 	public function testParseAccessTokenErrorTotalBullshit(){
 		$client  = $this->getMock(ClientInterface::class);
@@ -336,7 +336,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
 	 */
 	public function testParseAccessTokenErrorItsAnError(){
 		$client  = $this->getMock(ClientInterface::class);
@@ -354,7 +354,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
 	 */
 	public function testParseAccessTokenErrorItsMissingOauthToken(){
 		$client  = $this->getMock(ClientInterface::class);
@@ -372,7 +372,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	}
 
 	/**
-	 * @covers OAuth\OAuth1\Service\Twitter::parseAccessTokenResponse
+
 	 */
 	public function testParseAccessTokenErrorItsMissingOauthTokenSecret(){
 		$client  = $this->getMock(ClientInterface::class);
