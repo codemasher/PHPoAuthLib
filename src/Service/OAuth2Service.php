@@ -2,9 +2,7 @@
 
 namespace OAuth\Service;
 
-use OAuth\_killme\CredentialsInterface;
 use OAuth\Http\ClientInterface;
-use OAuth\Http\Exception\TokenResponseException;
 use OAuth\Http\Uri;
 use OAuth\Service\Exception;
 use OAuth\Service\Exception\InvalidAuthorizationStateException;
@@ -32,24 +30,13 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	/** @var string */
 	protected $apiVersion;
 
-	/**
-	 * @param CredentialsInterface  $credentials
-	 * @param ClientInterface       $httpClient
-	 * @param TokenStorageInterface $storage
-	 * @param array                 $scopes
-	 * @param Uri|null              $baseApiUri
-	 * @param bool                  $stateParameterInAutUrl
-	 * @param string                $apiVersion
-	 *
-	 * @throws InvalidScopeException
-	 */
 	public function __construct(
 		ClientInterface $httpClient,
 		TokenStorageInterface $storage,
-		                        $callbackURL, $key, $secret, $scopes = [],
+		$callbackURL, $key, $secret, $scopes = [],
 		Uri $baseApiUri = null,
 		$stateParameterInAutUrl = false,
-		$apiVersion = ""
+		$apiVersion = ''
 	){
 		parent::__construct($httpClient, $storage, $callbackURL, $key, $secret);
 		$this->stateParameterInAuthUrl = $stateParameterInAutUrl;
@@ -91,7 +78,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 		}
 
 		// Build the url
-		$url = clone $this->getAuthorizationEndpoint();
+		$url = new Uri($this->authorizationEndpoint);
 		foreach($parameters as $key => $val){
 			$url->addToQuery($key, $val);
 		}
@@ -116,7 +103,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 		];
 
 		$responseBody = $this->httpClient->retrieveResponse(
-			$this->getAccessTokenEndpoint(),
+			new Uri($this->accessTokenEndpoint),
 			$bodyParams,
 			$this->getExtraOAuthHeaders()
 		);
@@ -132,9 +119,9 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 * If the path provided is not an absolute URI, the base API Uri (must be passed into constructor) will be used.
 	 *
 	 * @param string|Uri $path
-	 * @param string              $method       HTTP method
-	 * @param array               $body         Request body if applicable.
-	 * @param array               $extraHeaders Extra headers if applicable. These will override service-specific
+	 * @param string     $method                HTTP method
+	 * @param array      $body                  Request body if applicable.
+	 * @param array      $extraHeaders          Extra headers if applicable. These will override service-specific
 	 *                                          any defaults.
 	 *
 	 * @return string
@@ -218,7 +205,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 		];
 
 		$responseBody = $this->httpClient->retrieveResponse(
-			$this->getAccessTokenEndpoint(),
+			new Uri($this->accessTokenEndpoint),
 			$parameters,
 			$this->getExtraOAuthHeaders()
 		);

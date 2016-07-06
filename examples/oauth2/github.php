@@ -10,7 +10,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
-require_once __DIR__.'/bootstrap.php';
+require_once __DIR__.'/../bootstrap.php';
 
 // Instantiate the GitHub service using the credentials, http client and storage mechanism for the token
 $gitHub = new \OAuth\Service\Providers\OAuth2\GitHub(

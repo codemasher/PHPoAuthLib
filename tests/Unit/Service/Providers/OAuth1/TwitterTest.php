@@ -166,7 +166,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 
 		$this->setExpectedException(TokenResponseException::class);
 
-		$service->requestRequestToken();
+		$service->getRequestToken();
 	}
 
 	/**
@@ -187,7 +187,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 
 		$this->setExpectedException(TokenResponseException::class);
 
-		$service->requestRequestToken();
+		$service->getRequestToken();
 	}
 
 	/**
@@ -208,7 +208,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 
 		$this->setExpectedException(TokenResponseException::class);
 
-		$service->requestRequestToken();
+		$service->getRequestToken();
 	}
 
 	/**
@@ -234,7 +234,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 
 		$this->setExpectedException(TokenResponseException::class);
 
-		$service->requestRequestToken();
+		$service->getRequestToken();
 	}
 
 	/**
@@ -259,7 +259,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 			$this->getMock(SignatureInterface::class)
 		);
 
-		$this->assertInstanceOf(OAuth1Token::class, $service->requestRequestToken());
+		$this->assertInstanceOf(OAuth1Token::class, $service->getRequestToken());
 	}
 
 	/**
@@ -285,7 +285,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 
 		$this->setExpectedException(TokenResponseException::class);
 
-		$service->requestAccessToken('foo', 'bar', $token);
+		$service->getAccessToken('foo', 'bar', $token);
 	}
 
 	/**
@@ -314,7 +314,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 			$this->getMock(SignatureInterface::class)
 		);
 
-		$this->assertInstanceOf(OAuth1Token::class, $service->requestAccessToken('foo', 'bar', $token));
+		$this->assertInstanceOf(OAuth1Token::class, $service->getAccessToken('foo', 'bar', $token));
 	}
 
 	/**

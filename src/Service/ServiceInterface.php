@@ -2,8 +2,6 @@
 
 namespace OAuth\Service;
 
-use OAuth\Http\Uri;
-
 /**
  * Defines methods common among all OAuth services.
  */
@@ -16,9 +14,9 @@ interface ServiceInterface{
 	 * @param string|\OAuth\Http\Uri $path
 	 * @param string                 $method       HTTP method
 	 * @param array                  $body         Request body if applicable (an associative array will
-	 *                                          automatically be converted into a urlencoded body)
+	 *                                             automatically be converted into a urlencoded body)
 	 * @param array                  $extraHeaders Extra headers if applicable. These will override service-specific
-	 *                                          any defaults.
+	 *                                             any defaults.
 	 *
 	 * @return string
 	 */
@@ -32,18 +30,4 @@ interface ServiceInterface{
 	 * @return \OAuth\Http\Uri
 	 */
 	public function getAuthorizationUri(array $additionalParameters = []);
-
-	/**
-	 * Returns the authorization API endpoint.
-	 *
-	 * @return \OAuth\Http\Uri
-	 */
-	public function getAuthorizationEndpoint();
-
-	/**
-	 * Returns the access token API endpoint.
-	 *
-	 * @return \OAuth\Http\Uri
-	 */
-	public function getAccessTokenEndpoint();
 }

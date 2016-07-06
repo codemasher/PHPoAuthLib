@@ -2,54 +2,18 @@
 
 namespace OAuth\Service\Providers\OAuth1;
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Http\ClientInterface;
 use OAuth\Http\Exception\TokenResponseException;
-use OAuth\Http\Uri;
-use OAuth\Service\SignatureInterface;
-use OAuth\Storage\TokenStorageInterface;
+use OAuth\Service\OAuth1Service;
 use OAuth\Token\OAuth1Token;
 
-class Flickr extends \OAuth\Service\OAuth1Service{
+class Flickr extends OAuth1Service{
 
 	protected $format;
 
-	public function __construct(
-		ClientInterface $httpClient,
-		TokenStorageInterface $storage,
-		SignatureInterface $signature,
-		$callbackURL, $key, $secret,
-		Uri $baseApiUri = null
-	){
-		parent::__construct($httpClient, $storage, $signature, $callbackURL, $key, $secret, $baseApiUri);
-		if($baseApiUri === null){
-			$this->baseApiUri = new Uri('https://api.flickr.com/services/rest/');
-		}
-	}
-
-	public function getRequestTokenEndpoint(){
-		return new Uri('https://www.flickr.com/services/oauth/request_token');
-	}
-
-	public function getAuthorizationEndpoint(){
-		return new Uri('https://www.flickr.com/services/oauth/authorize');
-	}
-
-	public function getAccessTokenEndpoint(){
-		return new Uri('https://www.flickr.com/services/oauth/access_token');
-	}
-
-	protected function parseRequestTokenResponse($responseBody){
-		parse_str($responseBody, $data);
-		if(null === $data || !is_array($data)){
-			throw new TokenResponseException('Unable to parse response.');
-		}
-		elseif(!isset($data['oauth_callback_confirmed']) || $data['oauth_callback_confirmed'] != 'true'){
-			throw new TokenResponseException('Error in retrieving token.');
-		}
-
-		return $this->parseAccessTokenResponse($responseBody);
-	}
+	protected $API_BASE              = 'https://api.flickr.com/services/rest/';
+	protected $requestTokenEndpoint  = 'https://www.flickr.com/services/oauth/request_token';
+	protected $authorizationEndpoint = 'https://www.flickr.com/services/oauth/authorize';
+	protected $accessTokenEndpoint   = 'https://www.flickr.com/services/oauth/access_token';
 
 	protected function parseAccessTokenResponse($responseBody){
 		parse_str($responseBody, $data);

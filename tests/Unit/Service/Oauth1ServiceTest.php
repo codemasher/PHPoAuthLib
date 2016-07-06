@@ -81,7 +81,7 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 			$this->getMock(Uri::class)
 		);
 
-		$this->assertInstanceOf(OAuth1Token::class, $service->requestRequestToken());
+		$this->assertInstanceOf(OAuth1Token::class, $service->getRequestToken());
 	}
 
 	/**
@@ -160,7 +160,7 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 			$this->getMock(Uri::class)
 		);
 
-		$this->assertInstanceOf(OAuth1Token::class, $service->requestAccessToken('foo', 'bar'));
+		$this->assertInstanceOf(OAuth1Token::class, $service->getAccessToken('foo', 'bar'));
 	}
 
 	/**
@@ -199,7 +199,7 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 			$this->getMock(Uri::class)
 		);
 
-		$this->assertInstanceOf(OAuth1Token::class, $service->requestAccessToken('foo', 'bar', $token));
+		$this->assertInstanceOf(OAuth1Token::class, $service->getAccessToken('foo', 'bar', $token));
 	}
 
 	/**

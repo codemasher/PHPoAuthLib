@@ -46,7 +46,7 @@ switch($step){
 
 	case 1:
 
-		if($token = $flickrService->requestRequestToken()){
+		if($token = $flickrService->getRequestToken()){
 			$oauth_token = $token->getAccessToken();
 			$secret      = $token->getAccessTokenSecret();
 
@@ -62,7 +62,7 @@ switch($step){
 		$token  = $storage->retrieveAccessToken('Flickr');
 		$secret = $token->getAccessTokenSecret();
 
-		if($token = $flickrService->requestAccessToken($oauth_token, $oauth_verifier, $secret)){
+		if($token = $flickrService->getAccessToken($oauth_token, $oauth_verifier, $secret)){
 			$oauth_token = $token->getAccessToken();
 			$secret      = $token->getAccessTokenSecret();
 

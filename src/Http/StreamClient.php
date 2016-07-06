@@ -13,10 +13,10 @@ class StreamClient extends AbstractHttpClient{
 	 * Any implementing HTTP providers should send a request to the provided endpoint with the parameters.
 	 * They should return, in string form, the response body and throw an exception on error.
 	 *
-	 * @param Uri $endpoint
-	 * @param mixed        $requestBody
-	 * @param array        $extraHeaders
-	 * @param string       $method
+	 * @param Uri    $endpoint
+	 * @param mixed  $requestBody
+	 * @param array  $extraHeaders
+	 * @param string $method
 	 *
 	 * @return string
 	 *

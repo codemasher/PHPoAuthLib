@@ -2,6 +2,7 @@
 
 namespace OAuth\Service;
 
+use OAuth\Token\OAuth1TokenInterface;
 use OAuth\Token\TokenInterface;
 
 /**
@@ -16,7 +17,7 @@ interface OAuth1ServiceInterface extends ServiceInterface{
 	 *
 	 * @throws \OAuth\Http\Exception\TokenResponseException
 	 */
-	public function requestRequestToken();
+	public function getRequestToken();
 
 	/**
 	 * Retrieves and stores/returns the OAuth1 access token after a successful authorization.
@@ -29,10 +30,15 @@ interface OAuth1ServiceInterface extends ServiceInterface{
 	 *
 	 * @throws \OAuth\Http\Exception\TokenResponseException
 	 */
-	public function requestAccessToken($token, $verifier, $tokenSecret);
+	public function getAccessToken($token, $verifier, $tokenSecret);
 
 	/**
-	 * @return \OAuth\Http\Uri
+	 * Refreshes an OAuth1 access token
+	 *
+	 * @param  OAuth1TokenInterface $token
+	 *
+	 * @return OAuth1TokenInterface $token
 	 */
-	public function getRequestTokenEndpoint();
+	public function refreshAccessToken(OAuth1TokenInterface $token);
+
 }

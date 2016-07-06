@@ -17,9 +17,9 @@ interface SignatureInterface{
 	public function setTokenSecret($token);
 
 	/**
-	 * @param Uri $uri
-	 * @param array        $params
-	 * @param string       $method
+	 * @param Uri    $uri
+	 * @param array  $params
+	 * @param string $method
 	 *
 	 * @return string
 	 */

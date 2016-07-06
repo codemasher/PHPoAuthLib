@@ -77,7 +77,11 @@ class ServiceFactory{
 
 		$reflClass = new \ReflectionClass($className);
 
-		foreach(['OAuth2' => OAuth2ServiceInterface::class, 'OAuth1' => OAuth1ServiceInterface::class] as $version => $interface){
+		foreach([
+			        'OAuth2' => OAuth2ServiceInterface::class,
+			        'OAuth1' => OAuth1ServiceInterface::class,
+		        ] as $version => $interface
+		){
 			if($reflClass->implementsInterface($interface)){
 				$this->serviceClassMap[$version][ucfirst($serviceName)] = $className;
 

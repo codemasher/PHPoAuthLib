@@ -2,7 +2,6 @@
 
 namespace OAuth\Service;
 
-use OAuth\_killme\CredentialsInterface;
 use OAuth\Http\ClientInterface;
 use OAuth\Http\Uri;
 use OAuth\OauthException;
@@ -13,16 +12,17 @@ use OAuth\Storage\TokenStorageInterface;
  */
 abstract class ServiceAbstract implements ServiceInterface{
 
-	/** @var \OAuth\_killme\CredentialsInterface */
-	protected $credentials;
+	protected $API_BASE;
+	protected $authorizationEndpoint;
+	protected $accessTokenEndpoint;
 
-	/** @var string  */
+	/** @var string */
 	protected $callbackURL;
 
-	/** @var string  */
+	/** @var string */
 	protected $key;
 
-	/** @var string  */
+	/** @var string */
 	protected $secret;
 
 	/** @var ClientInterface */
@@ -32,7 +32,6 @@ abstract class ServiceAbstract implements ServiceInterface{
 	protected $storage;
 
 	/**
-	 * @param CredentialsInterface  $credentials
 	 * @param ClientInterface       $httpClient
 	 * @param TokenStorageInterface $storage
 	 */
@@ -41,8 +40,8 @@ abstract class ServiceAbstract implements ServiceInterface{
 		TokenStorageInterface $storage, $callbackURL, $key, $secret
 	){
 		$this->callbackURL = $callbackURL;
-		$this->key = $key;
-		$this->secret = $secret;
+		$this->key         = $key;
+		$this->secret      = $secret;
 		$this->httpClient  = $httpClient;
 		$this->storage     = $storage;
 	}

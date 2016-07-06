@@ -88,7 +88,7 @@ class Bitly extends OAuth2Service{
 		];
 
 		$responseBody = $this->httpClient->retrieveResponse(
-			$this->getAccessTokenEndpoint(),
+			new Uri($this->accessTokenEndpoint),
 			$bodyParams,
 			$this->getExtraOAuthHeaders()
 		);
