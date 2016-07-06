@@ -22,7 +22,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -36,7 +36,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -50,7 +50,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class),
@@ -66,7 +66,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetRequestTokenEndpoint(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -84,7 +84,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -119,7 +119,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testSetAuthorizationEndpoint(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -136,7 +136,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -158,7 +158,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue(null));
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -179,7 +179,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('notanarray'));
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -200,7 +200,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('foo=bar'));
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -226,7 +226,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		;
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -253,7 +253,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		;
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -277,7 +277,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class)
@@ -308,7 +308,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class)
@@ -323,7 +323,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	public function testParseAccessTokenErrorTotalBullshit(){
 		$client  = $this->getMock(ClientInterface::class);
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -341,7 +341,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	public function testParseAccessTokenErrorItsAnError(){
 		$client  = $this->getMock(ClientInterface::class);
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -359,7 +359,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	public function testParseAccessTokenErrorItsMissingOauthToken(){
 		$client  = $this->getMock(ClientInterface::class);
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -377,7 +377,7 @@ class TwitterTest extends \PHPUnit_Framework_TestCase{
 	public function testParseAccessTokenErrorItsMissingOauthTokenSecret(){
 		$client  = $this->getMock(ClientInterface::class);
 		$service = new Twitter(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)

@@ -90,7 +90,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'twitter',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -110,7 +110,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -131,7 +131,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'twitter',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -150,7 +150,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'facebook',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -170,7 +170,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -191,7 +191,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'facebook',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -214,7 +214,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class),
 			['bar']
 		);
@@ -229,7 +229,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -251,7 +251,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class)
 		);
 
@@ -272,7 +272,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class),
 			['FOO']
 		);
@@ -294,7 +294,7 @@ class ServiceFactoryTest extends \PHPUnit_Framework_TestCase{
 
 		$service = $factory->createService(
 			'foo',
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(TokenStorageInterface::class),
 			['custom']
 		);

@@ -9,9 +9,9 @@ use OAuth\Service\Exception\UnsupportedHashAlgorithmException;
 class Signature implements SignatureInterface{
 
 	/**
-	 * @var \OAuth\_killme\CredentialsInterface
+	 * @var string
 	 */
-	protected $credentials;
+	protected $secret;
 
 	/**
 	 * @var string
@@ -24,10 +24,10 @@ class Signature implements SignatureInterface{
 	protected $tokenSecret = null;
 
 	/**
-	 * @param CredentialsInterface $credentials
+	 * @param string $credentials
 	 */
-	public function __construct(CredentialsInterface $credentials){
-		$this->credentials = $credentials;
+	public function __construct($secret){
+		$this->secret = $secret;
 	}
 
 	/**

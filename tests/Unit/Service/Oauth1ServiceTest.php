@@ -23,10 +23,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			OAuth1Service::class,
 			[
-				$this->getMock(CredentialsInterface::class),
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
 				$this->getMock(SignatureInterface::class),
+				'','','',
 				$this->getMock(Uri::class),
 			]
 		);
@@ -41,10 +41,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			OAuth1Service::class,
 			[
-				$this->getMock(CredentialsInterface::class),
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
 				$this->getMock(SignatureInterface::class),
+				'','','',
 				$this->getMock(Uri::class),
 			]
 		);
@@ -74,10 +74,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		;
 
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 
@@ -90,10 +90,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationUriWithoutParameters(){
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 
@@ -106,10 +106,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationUriWithParameters(){
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 
@@ -153,10 +153,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 
@@ -192,10 +192,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 
@@ -224,10 +224,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 
@@ -249,10 +249,10 @@ class Oauth1ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth1Service(
-			$this->getMock(CredentialsInterface::class),
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class),
+			'','','',
 			$this->getMock(Uri::class)
 		);
 

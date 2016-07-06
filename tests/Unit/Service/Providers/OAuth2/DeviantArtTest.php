@@ -21,7 +21,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -34,7 +34,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -47,7 +47,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			[],
@@ -63,7 +63,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -77,7 +77,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -100,7 +100,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$storage
 		);
@@ -120,7 +120,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('error=some_error'));
 
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -139,7 +139,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('{"access_token":"foo","expires_in":"bar"}'));
 
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -156,7 +156,7 @@ class DeviantArtTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('{"access_token":"foo","expires_in":"bar","refersh_token":"baz"}'));
 
 		$service = new DeviantArt(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);

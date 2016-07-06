@@ -19,7 +19,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -32,7 +32,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -45,7 +45,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			[],
@@ -61,7 +61,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -75,7 +75,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -92,7 +92,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue(null));
 
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -111,7 +111,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('error=some_error'));
 
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -130,7 +130,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('{"access_token":"foo","expires_in":"bar"}'));
 
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -147,7 +147,7 @@ class SoundCloudTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('{"access_token":"foo","expires_in":"bar","refresh_token":"baz"}'));
 
 		$service = new SoundCloud(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);

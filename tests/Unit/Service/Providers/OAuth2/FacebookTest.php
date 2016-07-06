@@ -22,7 +22,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -35,7 +35,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -48,7 +48,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			[],
@@ -64,7 +64,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -78,7 +78,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -101,7 +101,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$storage
 		);
@@ -121,7 +121,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('error=some_error'));
 
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -140,7 +140,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('access_token=foo&expires=bar'));
 
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -157,7 +157,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('access_token=foo&expires=bar&refresh_token=baz'));
 
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -173,7 +173,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 		$client = $this->getMock(ClientInterface::class);
 
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);
@@ -191,7 +191,7 @@ class FacebookTest extends \PHPUnit_Framework_TestCase{
 		$client = $this->getMock(ClientInterface::class);
 
 		$service = new Facebook(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class)
 		);

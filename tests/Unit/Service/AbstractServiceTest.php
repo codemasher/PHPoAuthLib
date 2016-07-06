@@ -20,9 +20,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			ServiceAbstract::class,
 			[
-				$this->getMock(CredentialsInterface::class),
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
+				'','',''
 			]
 		);
 
@@ -37,9 +37,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			ServiceAbstract::class,
 			[
-				$this->getMock(CredentialsInterface::class),
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
+				'','',''
 			]
 		);
 
@@ -52,9 +52,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testService(){
 		$service = new MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$this->assertSame('MockServiceAbstract', $service->service());
@@ -66,9 +66,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testDetermineRequestUriFromPathUsingUriObject(){
 		$service = new MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$this->assertInstanceOf(
@@ -83,9 +83,10 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testDetermineRequestUriFromPathUsingHttpPath(){
 		$service = new \OAuthTest\Mocks\MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
+
 		);
 
 		$uri = $service->testDetermineRequestUriFromPath('http://example.com');
@@ -100,9 +101,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testDetermineRequestUriFromPathUsingHttpsPath(){
 		$service = new \OAuthTest\Mocks\MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),			'','',''
+
 		);
 
 		$uri = $service->testDetermineRequestUriFromPath('https://example.com');
@@ -119,9 +120,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 		$this->setExpectedException(OauthException::class);
 
 		$service = new MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),			'','',''
+
 		);
 
 		$uri = $service->testDetermineRequestUriFromPath('example.com');
@@ -133,9 +134,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testDetermineRequestUriFromPathWithQueryString(){
 		$service = new MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),			'','',''
+
 		);
 
 		$uri = $service->testDetermineRequestUriFromPath(
@@ -153,9 +154,9 @@ class AbstractServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testDetermineRequestUriFromPathWithLeadingSlashInPath(){
 		$service = new MockServiceAbstract(
-			$this->getMock(CredentialsInterface::class),
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),'','',''
+
 		);
 
 		$uri = $service->testDetermineRequestUriFromPath(

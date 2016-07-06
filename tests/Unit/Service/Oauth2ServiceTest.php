@@ -24,9 +24,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			OAuth2Service::class,
 			[
-				$this->getMock(CredentialsInterface::class),
+				/*$this->getMock(CredentialsInterface::class),*/
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
+				'','','',
 				[],
 			]
 		);
@@ -41,9 +42,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			OAuth2Service::class,
 			[
-				$this->getMock(CredentialsInterface::class),
+				/*$this->getMock(CredentialsInterface::class),*/
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
+				'','','',
 				[],
 			]
 		);
@@ -58,9 +60,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$service = $this->getMockForAbstractClass(
 			OAuth2Service::class,
 			[
-				$this->getMock(CredentialsInterface::class),
+				/*$this->getMock(CredentialsInterface::class),*/
 				$this->getMock(ClientInterface::class),
 				$this->getMock(TokenStorageInterface::class),
+				'','','',
 				[],
 				$this->getMock(Uri::class),
 			]
@@ -77,9 +80,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$this->setExpectedException(InvalidScopeException::class);
 
 		$service = new MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
+			'','','',
 			['invalidscope']
 		);
 	}
@@ -90,14 +94,14 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 
 	 */
 	public function testGetAuthorizationUriWithoutParametersOrScopes(){
-		$credentials = $this->getMock(CredentialsInterface::class);
-		$credentials->expects($this->once())->method('getConsumerId')->will($this->returnValue('foo'));
-		$credentials->expects($this->once())->method('getCallbackUrl')->will($this->returnValue('bar'));
+#		$credentials = $this->getMock(CredentialsInterface::class);
+#		$credentials->expects($this->once())->method('getConsumerId')->will($this->returnValue('foo'));
+#		$credentials->expects($this->once())->method('getCallbackUrl')->will($this->returnValue('bar'));
 
 		$service = new MockOAuth2Service(
-			$credentials,
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class)
+			,'bar', 'foo', ''
 		);
 
 		$this->assertSame(
@@ -112,14 +116,14 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 
 	 */
 	public function testGetAuthorizationUriWithParametersWithoutScopes(){
-		$credentials = $this->getMock(CredentialsInterface::class);
-		$credentials->expects($this->once())->method('getConsumerId')->will($this->returnValue('foo'));
-		$credentials->expects($this->once())->method('getCallbackUrl')->will($this->returnValue('bar'));
+#		$credentials = $this->getMock(CredentialsInterface::class);
+#		$credentials->expects($this->once())->method('getConsumerId')->will($this->returnValue('foo'));
+#		$credentials->expects($this->once())->method('getCallbackUrl')->will($this->returnValue('bar'));
 
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$credentials,
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'bar', 'foo', ''
 		);
 
 		$this->assertSame(
@@ -135,14 +139,14 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 
 	 */
 	public function testGetAuthorizationUriWithParametersAndScopes(){
-		$credentials = $this->getMock(CredentialsInterface::class);
-		$credentials->expects($this->once())->method('getConsumerId')->will($this->returnValue('foo'));
-		$credentials->expects($this->once())->method('getCallbackUrl')->will($this->returnValue('bar'));
+#		$credentials = $this->getMock(CredentialsInterface::class);
+#		$credentials->expects($this->once())->method('getConsumerId')->will($this->returnValue('foo'));
+#		$credentials->expects($this->once())->method('getCallbackUrl')->will($this->returnValue('bar'));
 
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$credentials,
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
+			'bar', 'foo', '',
 			['mock', 'mock2']
 		);
 
@@ -162,9 +166,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testRequestAccessToken(){
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$this->assertInstanceof(OAuth2Token::class, $service->requestAccessToken('code'));
@@ -185,9 +190,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
-			$storage
+			$storage,
+			'','',''
 		);
 
 		$this->setExpectedException(ExpiredTokenException::class, 'Token expired on 03/26/1984 at 12:00:00 AM');
@@ -216,9 +222,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
-			$storage
+			$storage,
+			'','',''
 		);
 
 		$headers = $service->request('https://pieterhordijk.com/my/awesome/path');
@@ -248,9 +255,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
-			$storage
+			$storage,
+			'','',''
 		);
 
 		$service->setAuthorizationMethod('querystring');
@@ -282,9 +290,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
-			$storage
+			$storage,
+			'','',''
 		);
 
 		$service->setAuthorizationMethod('querystring2');
@@ -316,9 +325,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->once())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
-			$storage
+			$storage,
+			'','',''
 		);
 
 		$service->setAuthorizationMethod('bearer');
@@ -335,9 +345,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetStorage(){
 		$service = new MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$this->assertInstanceOf(TokenStorageInterface::class, $service->getStorage());
@@ -352,9 +363,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testRefreshAccessTokenSuccess(){
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$token = $this->getMock(OAuth2Token::class);
@@ -369,9 +381,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testIsValidScopeTrue(){
 		$service = new MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$this->assertTrue($service->isValidScope('mock'));
@@ -383,9 +396,10 @@ class Oauth2ServiceTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testIsValidScopeFalse(){
 		$service = new \OAuthTest\Mocks\MockOAuth2Service(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
-			$this->getMock(TokenStorageInterface::class)
+			$this->getMock(TokenStorageInterface::class),
+			'','',''
 		);
 
 		$this->assertFalse($service->isValidScope('invalid'));

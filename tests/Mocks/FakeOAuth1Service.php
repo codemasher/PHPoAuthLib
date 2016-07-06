@@ -12,13 +12,14 @@ use OAuth\Storage\TokenStorageInterface;
 class FakeOAuth1Service extends OAuth1Service{
 
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
 		TokenStorageInterface $storage,
 		SignatureInterface $signature,
+		$callbackURL, $key, $secret,
 		Uri $baseApiUri = null
 	){
-		parent::__construct($credentials, $httpClient, $storage, $signature, $baseApiUri);
+		parent::__construct($httpClient, $storage, $signature,
+			$callbackURL, $key, $secret, $baseApiUri);
 	}
 
 	/**

@@ -21,7 +21,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInterfaceWithoutCustomUri(){
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -35,7 +35,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithoutCustomUri(){
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -49,7 +49,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testConstructCorrectInstanceWithCustomUri(){
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class),
@@ -65,7 +65,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetRequestTokenEndpoint(){
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -83,7 +83,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAuthorizationEndpoint(){
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -101,7 +101,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testGetAccessTokenEndpoint(){
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$this->getMock(ClientInterface::class),
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -123,7 +123,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue(null));
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -144,7 +144,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('notanarray'));
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -165,7 +165,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		$client->expects($this->once())->method('retrieveResponse')->will($this->returnValue('foo=bar'));
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -191,7 +191,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		;
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -218,7 +218,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		;
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$this->getMock(TokenStorageInterface::class),
 			$this->getMock(SignatureInterface::class)
@@ -242,7 +242,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class)
@@ -273,7 +273,7 @@ class TumblrTest extends \PHPUnit_Framework_TestCase{
 		$storage->expects($this->any())->method('retrieveAccessToken')->will($this->returnValue($token));
 
 		$service = new Tumblr(
-			$this->getMock(CredentialsInterface::class),
+			/*$this->getMock(CredentialsInterface::class),*/
 			$client,
 			$storage,
 			$this->getMock(SignatureInterface::class)
