@@ -2,7 +2,6 @@
 
 namespace OAuth\Service\Providers\OAuth2;
 
-use OAuth\_killme\CredentialsInterface;
 use OAuth\Http\ClientInterface;
 use OAuth\Http\Exception\TokenResponseException;
 use OAuth\Http\Uri;
@@ -30,13 +29,12 @@ class Spotify extends OAuth2Service{
 	const SCOPE_USER_READ_FOLLOW           = 'user-follow-read';
 
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
-		TokenStorageInterface $storage,
+		TokenStorageInterface $storage, $callbackURL, $key, $secret,
 		$scopes = [],
 		Uri $baseApiUri = null
 	){
-		parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri, true);
+		parent::__construct($httpClient, $storage, $callbackURL, $key, $secret, $scopes, $baseApiUri, true);
 
 		if(null === $baseApiUri){
 			$this->baseApiUri = new Uri('https://api.spotify.com/v1/');
@@ -103,7 +101,7 @@ class Spotify extends OAuth2Service{
 	protected function getExtraOAuthHeaders(){
 		return [
 			'Authorization' => 'Basic '.
-			                   base64_encode($this->credentials->getConsumerId().':'.$this->credentials->getConsumerSecret()),
+			                   base64_encode($this->key.':'.$this->secret),
 		];
 	}
 }

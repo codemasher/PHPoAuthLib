@@ -2,7 +2,6 @@
 
 namespace OAuth\Service\Providers\OAuth2;
 
-use OAuth\_killme\CredentialsInterface;
 use OAuth\Http\ClientInterface;
 use OAuth\Http\Exception\TokenResponseException;
 use OAuth\Http\Uri;
@@ -125,13 +124,12 @@ class GitHub extends OAuth2Service{
 	const SCOPE_PUBLIC_KEY_ADMIN = 'admin:public_key';
 
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
 		TokenStorageInterface $storage,
-		$scopes = [],
+		$callbackURL, $key, $secret, $scopes = [],
 		Uri $baseApiUri = null
 	){
-		parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri);
+		parent::__construct($httpClient, $storage, $callbackURL, $key, $secret, $scopes, $baseApiUri);
 
 		if(null === $baseApiUri){
 			$this->baseApiUri = new Uri('https://api.github.com/');
@@ -156,7 +154,7 @@ class GitHub extends OAuth2Service{
 	 * {@inheritdoc}
 	 */
 	protected function getAuthorizationMethod(){
-		return static::AUTHORIZATION_METHOD_QUERY_STRING;
+		return self::AUTHORIZATION_METHOD_QUERY_STRING;
 	}
 
 	/**

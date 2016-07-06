@@ -65,7 +65,7 @@ class Yahoo extends OAuth2Service{
 	 */
 	protected function getExtraOAuthHeaders(){
 		$encodedCredentials = base64_encode(
-			$this->credentials->getConsumerId().':'.$this->credentials->getConsumerSecret()
+			$this->key.':'.$this->secret
 		);
 
 		return ['Authorization' => 'Basic '.$encodedCredentials];

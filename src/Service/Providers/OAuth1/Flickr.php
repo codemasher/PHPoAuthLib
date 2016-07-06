@@ -15,13 +15,13 @@ class Flickr extends \OAuth\Service\OAuth1Service{
 	protected $format;
 
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
 		TokenStorageInterface $storage,
 		SignatureInterface $signature,
+		$callbackURL, $key, $secret,
 		Uri $baseApiUri = null
 	){
-		parent::__construct($credentials, $httpClient, $storage, $signature, $baseApiUri);
+		parent::__construct($httpClient, $storage, $signature, $callbackURL, $key, $secret, $baseApiUri);
 		if($baseApiUri === null){
 			$this->baseApiUri = new Uri('https://api.flickr.com/services/rest/');
 		}

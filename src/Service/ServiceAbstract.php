@@ -16,6 +16,15 @@ abstract class ServiceAbstract implements ServiceInterface{
 	/** @var \OAuth\_killme\CredentialsInterface */
 	protected $credentials;
 
+	/** @var string  */
+	protected $callbackURL;
+
+	/** @var string  */
+	protected $key;
+
+	/** @var string  */
+	protected $secret;
+
 	/** @var ClientInterface */
 	protected $httpClient;
 
@@ -28,11 +37,12 @@ abstract class ServiceAbstract implements ServiceInterface{
 	 * @param TokenStorageInterface $storage
 	 */
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
-		TokenStorageInterface $storage
+		TokenStorageInterface $storage, $callbackURL, $key, $secret
 	){
-		$this->credentials = $credentials;
+		$this->callbackURL = $callbackURL;
+		$this->key = $key;
+		$this->secret = $secret;
 		$this->httpClient  = $httpClient;
 		$this->storage     = $storage;
 	}

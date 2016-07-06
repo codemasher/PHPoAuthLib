@@ -39,8 +39,8 @@ class Dropbox extends OAuth2Service{
 		$parameters = array_merge(
 			$additionalParameters,
 			[
-				'client_id'     => $this->credentials->getConsumerId(),
-				'redirect_uri'  => $this->credentials->getCallbackUrl(),
+				'client_id'     => $this->key,
+				'redirect_uri'  => $this->callbackURL,
 				'response_type' => 'code',
 			]
 		);

@@ -189,7 +189,7 @@ class Facebook extends OAuth2Service{
 		if(!isset($parameters['redirect_uri'])){
 			throw new OauthException("Redirect uri is mandatory for this request");
 		}
-		$parameters['app_id'] = $this->credentials->getConsumerId();
+		$parameters['app_id'] = $this->key;
 		$baseUrl              = self::WWW_URL.$this->getApiVersionString().'/dialog/'.$dialogPath;
 		$query                = http_build_query($parameters);
 

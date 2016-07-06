@@ -25,13 +25,13 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	 * {@inheritDoc}
 	 */
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
 		TokenStorageInterface $storage,
 		SignatureInterface $signature,
+		$callbackURL, $key, $secret,
 		Uri $baseApiUri = null
 	){
-		parent::__construct($credentials, $httpClient, $storage);
+		parent::__construct($httpClient, $storage,$callbackURL, $key, $secret);
 
 		$this->signature  = $signature;
 		$this->baseApiUri = $baseApiUri;
@@ -232,8 +232,8 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	protected function getBasicAuthorizationHeaderInfo(){
 		$dateTime         = new \DateTime();
 		$headerParameters = [
-			'oauth_callback'         => $this->credentials->getCallbackUrl(),
-			'oauth_consumer_key'     => $this->credentials->getConsumerId(),
+			'oauth_callback'         => $this->callbackURL,
+			'oauth_consumer_key'     => $this->key,
 			'oauth_nonce'            => $this->generateNonce(),
 			'oauth_signature_method' => $this->getSignatureMethod(),
 			'oauth_timestamp'        => $dateTime->format('U'),

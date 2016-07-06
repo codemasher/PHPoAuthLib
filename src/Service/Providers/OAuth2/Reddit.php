@@ -106,7 +106,7 @@ class Reddit extends OAuth2Service{
 		// Reddit uses a Basic OAuth header
 		return [
 			'Authorization' => 'Basic '.
-			                   base64_encode($this->credentials->getConsumerId().':'.$this->credentials->getConsumerSecret()),
+			                   base64_encode($this->key.':'.$this->secret),
 		];
 	}
 }

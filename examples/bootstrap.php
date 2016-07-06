@@ -4,10 +4,11 @@
  * Bootstrap the library
  */
 use Dotenv\Dotenv;
-use OAuth\_killme\ServiceFactory;
 use OAuth\Http\UriFactory;
 
-require_once __DIR__.'/../vendor/autoload.php';
+const LIB_PATH = __DIR__.'/..';
+
+require_once LIB_PATH.'/vendor/autoload.php';
 
 /**
  * Setup error reporting
@@ -21,7 +22,7 @@ ini_set('display_errors', 1);
 ini_set('date.timezone', 'Europe/Amsterdam');
 
 
-(new Dotenv(__DIR__.'/../config'))->load();
+(new Dotenv(LIB_PATH.'/config'))->load();
 
 /**
  * Create a new instance of the URI class with the current URI, stripping the query string
@@ -29,6 +30,3 @@ ini_set('date.timezone', 'Europe/Amsterdam');
 $uriFactory = new UriFactory();
 $currentUri = $uriFactory->createFromSuperGlobalArray($_SERVER);
 $currentUri->setQuery('');
-
-/** @var $serviceFactory \OAuth\_killme\ServiceFactory An OAuth service factory. */
-$serviceFactory = new ServiceFactory();

@@ -27,11 +27,11 @@
 		}
 	],
 	"require": {
-		"php": ">=7.0.0"
+		"php": ">=7.0.0",
+		"vlucas/phpdotenv": "2.2.*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "5.3.*",
-		"vlucas/phpdotenv": "2.2.*"
+		"phpunit/phpunit": "5.3.*"
 	},
 	"suggest": {
 		"ext-openssl": "Allows for usage of secure connections with the stream-based HTTP client."

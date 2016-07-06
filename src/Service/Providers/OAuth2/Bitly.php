@@ -81,9 +81,9 @@ class Bitly extends OAuth2Service{
 
 		$bodyParams = [
 			'code'          => $code,
-			'client_id'     => $this->credentials->getConsumerId(),
-			'client_secret' => $this->credentials->getConsumerSecret(),
-			'redirect_uri'  => $this->credentials->getCallbackUrl(),
+			'client_id'     => $this->key,
+			'client_secret' => $this->secret,
+			'redirect_uri'  => $this->callbackURL,
 			'grant_type'    => 'authorization_code',
 		];
 

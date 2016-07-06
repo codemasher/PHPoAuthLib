@@ -44,15 +44,14 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 * @throws InvalidScopeException
 	 */
 	public function __construct(
-		CredentialsInterface $credentials,
 		ClientInterface $httpClient,
 		TokenStorageInterface $storage,
-		$scopes = [],
+		                        $callbackURL, $key, $secret, $scopes = [],
 		Uri $baseApiUri = null,
 		$stateParameterInAutUrl = false,
 		$apiVersion = ""
 	){
-		parent::__construct($credentials, $httpClient, $storage);
+		parent::__construct($httpClient, $storage, $callbackURL, $key, $secret);
 		$this->stateParameterInAuthUrl = $stateParameterInAutUrl;
 
 		foreach($scopes as $scope){
@@ -76,8 +75,8 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 			$additionalParameters,
 			[
 				'type'          => 'web_server',
-				'client_id'     => $this->credentials->getConsumerId(),
-				'redirect_uri'  => $this->credentials->getCallbackUrl(),
+				'client_id'     => $this->key,
+				'redirect_uri'  => $this->callbackURL,
 				'response_type' => 'code',
 			]
 		);
@@ -110,9 +109,9 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 
 		$bodyParams = [
 			'code'          => $code,
-			'client_id'     => $this->credentials->getConsumerId(),
-			'client_secret' => $this->credentials->getConsumerSecret(),
-			'redirect_uri'  => $this->credentials->getCallbackUrl(),
+			'client_id'     => $this->key,
+			'client_secret' => $this->secret,
+			'redirect_uri'  => $this->callbackURL,
 			'grant_type'    => 'authorization_code',
 		];
 
@@ -161,22 +160,22 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 		}
 
 		// add the token where it may be needed
-		if(static::AUTHORIZATION_METHOD_HEADER_OAUTH === $this->getAuthorizationMethod()){
+		if(self::AUTHORIZATION_METHOD_HEADER_OAUTH === $this->getAuthorizationMethod()){
 			$extraHeaders = array_merge(['Authorization' => 'OAuth '.$token->getAccessToken()], $extraHeaders);
 		}
-		elseif(static::AUTHORIZATION_METHOD_QUERY_STRING === $this->getAuthorizationMethod()){
+		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING === $this->getAuthorizationMethod()){
 			$uri->addToQuery('access_token', $token->getAccessToken());
 		}
-		elseif(static::AUTHORIZATION_METHOD_QUERY_STRING_V2 === $this->getAuthorizationMethod()){
+		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING_V2 === $this->getAuthorizationMethod()){
 			$uri->addToQuery('oauth2_access_token', $token->getAccessToken());
 		}
-		elseif(static::AUTHORIZATION_METHOD_QUERY_STRING_V3 === $this->getAuthorizationMethod()){
+		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING_V3 === $this->getAuthorizationMethod()){
 			$uri->addToQuery('apikey', $token->getAccessToken());
 		}
-		elseif(static::AUTHORIZATION_METHOD_QUERY_STRING_V4 === $this->getAuthorizationMethod()){
+		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING_V4 === $this->getAuthorizationMethod()){
 			$uri->addToQuery('auth', $token->getAccessToken());
 		}
-		elseif(static::AUTHORIZATION_METHOD_HEADER_BEARER === $this->getAuthorizationMethod()){
+		elseif(self::AUTHORIZATION_METHOD_HEADER_BEARER === $this->getAuthorizationMethod()){
 			$extraHeaders = array_merge(['Authorization' => 'Bearer '.$token->getAccessToken()], $extraHeaders);
 		}
 
@@ -213,8 +212,8 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 		$parameters = [
 			'grant_type'    => 'refresh_token',
 			'type'          => 'web_server',
-			'client_id'     => $this->credentials->getConsumerId(),
-			'client_secret' => $this->credentials->getConsumerSecret(),
+			'client_id'     => $this->key,
+			'client_secret' => $this->secret,
 			'refresh_token' => $refreshToken,
 		];
 
@@ -329,7 +328,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 * @return int
 	 */
 	protected function getAuthorizationMethod(){
-		return static::AUTHORIZATION_METHOD_HEADER_OAUTH;
+		return self::AUTHORIZATION_METHOD_HEADER_OAUTH;
 	}
 
 	/**
