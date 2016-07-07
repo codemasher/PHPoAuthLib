@@ -17,6 +17,8 @@ use OAuth\Token\OAuth2Token;
  * @link   https://images-na.ssl-images-amazon.com/images/G/01/lwa/dev/docs/website-developer-guide._TTH_.pdf
  */
 class Amazon extends OAuth2Service{
+#	protected $authorizationEndpoint = ;
+#	protected $accessTokenEndpoint   = ;
 
 	/**
 	 * Defined scopes

@@ -15,9 +15,6 @@ use OAuth\Token\TokenInterface;
 
 abstract class OAuth2Service extends BaseAbstractService implements OAuth2ServiceInterface{
 
-	/** @const OAUTH_VERSION */
-	const OAUTH_VERSION = 2;
-
 	/** @var array */
 	protected $scopes;
 
@@ -27,31 +24,22 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	/** @var bool */
 	protected $stateParameterInAuthUrl;
 
-	/** @var string */
-	protected $apiVersion;
+	protected $authorizationMethod = self::AUTHORIZATION_METHOD_HEADER_OAUTH;
 
-	public function __construct(
-		ClientInterface $httpClient,
-		TokenStorageInterface $storage,
-		$callbackURL, $key, $secret, $scopes = [],
-		Uri $baseApiUri = null,
-		$stateParameterInAutUrl = false,
-		$apiVersion = ''
-	){
+	protected $scopesDelimiter = ' ';
+
+	public function __construct(ClientInterface $httpClient, TokenStorageInterface $storage, $callbackURL, $key, $secret, $scopes = [], $stateParameterInAutUrl = false){
 		parent::__construct($httpClient, $storage, $callbackURL, $key, $secret);
-		$this->stateParameterInAuthUrl = $stateParameterInAutUrl;
 
-		foreach($scopes as $scope){
+		$this->stateParameterInAuthUrl = $stateParameterInAutUrl;
+		$this->scopes = $scopes;
+		$this->baseApiUri = new Uri($this->API_BASE);
+
+		foreach($this->scopes as $scope){
 			if(!$this->isValidScope($scope)){
 				throw new InvalidScopeException('Scope '.$scope.' is not valid for service '.get_class($this));
 			}
 		}
-
-		$this->scopes = $scopes;
-
-		$this->baseApiUri = $baseApiUri;
-
-		$this->apiVersion = $apiVersion;
 	}
 
 	/**
@@ -68,7 +56,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 			]
 		);
 
-		$parameters['scope'] = implode($this->getScopesDelimiter(), $this->scopes);
+		$parameters['scope'] = implode($this->scopesDelimiter, $this->scopes);
 
 		if($this->needsStateParameterInAuthUrl()){
 			if(!isset($parameters['state'])){
@@ -79,6 +67,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 
 		// Build the url
 		$url = new Uri($this->authorizationEndpoint);
+
 		foreach($parameters as $key => $val){
 			$url->addToQuery($key, $val);
 		}
@@ -90,25 +79,23 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 * {@inheritdoc}
 	 */
 	public function requestAccessToken($code, $state = null){
-		if(null !== $state){
+
+		if(!is_null($state)){
 			$this->validateAuthorizationState($state);
 		}
 
-		$bodyParams = [
-			'code'          => $code,
-			'client_id'     => $this->key,
-			'client_secret' => $this->secret,
-			'redirect_uri'  => $this->callbackURL,
-			'grant_type'    => 'authorization_code',
-		];
-
-		$responseBody = $this->httpClient->retrieveResponse(
+		$token = $this->parseAccessTokenResponse($this->httpClient->retrieveResponse(
 			new Uri($this->accessTokenEndpoint),
-			$bodyParams,
+			[
+				'code'          => $code,
+				'client_id'     => $this->key,
+				'client_secret' => $this->secret,
+				'redirect_uri'  => $this->callbackURL,
+				'grant_type'    => 'authorization_code',
+			],
 			$this->getExtraOAuthHeaders()
-		);
+		));
 
-		$token = $this->parseAccessTokenResponse($responseBody);
 		$this->storage->storeAccessToken($this->service(), $token);
 
 		return $token;
@@ -133,42 +120,33 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 		$uri   = $this->determineRequestUriFromPath($path, $this->baseApiUri);
 		$token = $this->storage->retrieveAccessToken($this->service());
 
-		if($token->getEndOfLife() !== TokenInterface::EOL_NEVER_EXPIRES
-		   && $token->getEndOfLife() !== TokenInterface::EOL_UNKNOWN
-		   && time() > $token->getEndOfLife()
-		){
-			throw new ExpiredTokenException(
-				sprintf(
-					'Token expired on %s at %s',
-					date('m/d/Y', $token->getEndOfLife()),
-					date('h:i:s A', $token->getEndOfLife())
-				)
-			);
+		if($token->getEndOfLife() !== TokenInterface::EOL_NEVER_EXPIRES && $token->getEndOfLife() !== TokenInterface::EOL_UNKNOWN && time() > $token->getEndOfLife()){
+			throw new ExpiredTokenException(sprintf('Token expired on %s at %s', date('m/d/Y', $token->getEndOfLife()), date('h:i:s A', $token->getEndOfLife())));
 		}
 
 		// add the token where it may be needed
-		if(self::AUTHORIZATION_METHOD_HEADER_OAUTH === $this->getAuthorizationMethod()){
-			$extraHeaders = array_merge(['Authorization' => 'OAuth '.$token->getAccessToken()], $extraHeaders);
-		}
-		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING === $this->getAuthorizationMethod()){
-			$uri->addToQuery('access_token', $token->getAccessToken());
-		}
-		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING_V2 === $this->getAuthorizationMethod()){
-			$uri->addToQuery('oauth2_access_token', $token->getAccessToken());
-		}
-		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING_V3 === $this->getAuthorizationMethod()){
-			$uri->addToQuery('apikey', $token->getAccessToken());
-		}
-		elseif(self::AUTHORIZATION_METHOD_QUERY_STRING_V4 === $this->getAuthorizationMethod()){
-			$uri->addToQuery('auth', $token->getAccessToken());
-		}
-		elseif(self::AUTHORIZATION_METHOD_HEADER_BEARER === $this->getAuthorizationMethod()){
-			$extraHeaders = array_merge(['Authorization' => 'Bearer '.$token->getAccessToken()], $extraHeaders);
+		switch($this->authorizationMethod){
+			case self::AUTHORIZATION_METHOD_HEADER_OAUTH:
+				$extraHeaders = array_merge(['Authorization' => 'OAuth '.$token->getAccessToken()], $extraHeaders);
+				break;
+			case self::AUTHORIZATION_METHOD_QUERY_STRING:
+				$uri->addToQuery('access_token', $token->getAccessToken());
+				break;
+			case self::AUTHORIZATION_METHOD_QUERY_STRING_V2:
+				$uri->addToQuery('oauth2_access_token', $token->getAccessToken());
+				break;
+			case self::AUTHORIZATION_METHOD_QUERY_STRING_V3:
+				$uri->addToQuery('apikey', $token->getAccessToken());
+				break;
+			case self::AUTHORIZATION_METHOD_QUERY_STRING_V4:
+				$uri->addToQuery('auth', $token->getAccessToken());
+				break;
+			case self::AUTHORIZATION_METHOD_HEADER_BEARER:
+				$extraHeaders = array_merge(['Authorization' => 'Bearer '.$token->getAccessToken()], $extraHeaders);
+				break;
 		}
 
-		$extraHeaders = array_merge($this->getExtraApiHeaders(), $extraHeaders);
-
-		return $this->httpClient->retrieveResponse($uri, $body, $extraHeaders, $method);
+		return $this->httpClient->retrieveResponse($uri, $body, array_merge($this->getExtraApiHeaders(), $extraHeaders), $method);
 	}
 
 	/**
@@ -196,20 +174,18 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 			throw new MissingRefreshTokenException();
 		}
 
-		$parameters = [
-			'grant_type'    => 'refresh_token',
-			'type'          => 'web_server',
-			'client_id'     => $this->key,
-			'client_secret' => $this->secret,
-			'refresh_token' => $refreshToken,
-		];
-
-		$responseBody = $this->httpClient->retrieveResponse(
+		$token = $this->parseAccessTokenResponse($this->httpClient->retrieveResponse(
 			new Uri($this->accessTokenEndpoint),
-			$parameters,
+			[
+				'grant_type'    => 'refresh_token',
+				'type'          => 'web_server',
+				'client_id'     => $this->key,
+				'client_secret' => $this->secret,
+				'refresh_token' => $refreshToken,
+			],
 			$this->getExtraOAuthHeaders()
-		);
-		$token        = $this->parseAccessTokenResponse($responseBody);
+		));
+
 		$this->storage->storeAccessToken($this->service(), $token);
 
 		return $token;
@@ -223,9 +199,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 * @return bool
 	 */
 	public function isValidScope($scope){
-		$reflectionClass = new \ReflectionClass(get_class($this));
-
-		return in_array($scope, $reflectionClass->getConstants(), true);
+		return in_array($scope, (new \ReflectionClass(get_class($this)))->getConstants(), true);
 	}
 
 	/**
@@ -256,7 +230,7 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 * @return string
 	 */
 	protected function generateAuthorizationState(){
-		return md5(rand());
+		return md5(random_bytes(256));
 	}
 
 	/**
@@ -308,33 +282,4 @@ abstract class OAuth2Service extends BaseAbstractService implements OAuth2Servic
 	 */
 	abstract protected function parseAccessTokenResponse($responseBody);
 
-	/**
-	 * Returns a class constant from ServiceInterface defining the authorization method used for the API
-	 * Header is the sane default.
-	 *
-	 * @return int
-	 */
-	protected function getAuthorizationMethod(){
-		return self::AUTHORIZATION_METHOD_HEADER_OAUTH;
-	}
-
-	/**
-	 * Returns api version string if is set else retrun empty string
-	 *
-	 * @return string
-	 */
-	protected function getApiVersionString(){
-		return !(empty($this->apiVersion)) ? "/".$this->apiVersion : "";
-	}
-
-	/**
-	 * Returns delimiter to scopes in getAuthorizationUri
-	 * For services that do not fully respect the Oauth's RFC,
-	 * and use scopes with commas as delimiter
-	 *
-	 * @return string
-	 */
-	protected function getScopesDelimiter(){
-		return ' ';
-	}
 }

@@ -14,8 +14,8 @@ require_once __DIR__.'/../bootstrap.php';
 
 // Instantiate the GitHub service using the credentials, http client and storage mechanism for the token
 $gitHub = new \OAuth\Service\Providers\OAuth2\GitHub(
-	new \OAuth\Http\CurlClient,
-	new \OAuth\Storage\Session,
+	$httpClient,
+	$storage,
 	$currentUri->getAbsoluteUri(),
 	getenv('GITHUB_KEY'),
 	getenv('GITHUB_SECRET'),
@@ -26,7 +26,9 @@ if(!empty($_GET['code'])){
 	// This was a callback request from github, get the token
 	$gitHub->requestAccessToken($_GET['code']);
 
-	echo 'The first email on your github account is '.json_decode($gitHub->request('user/emails'), true)[0];
+	$result = json_decode($gitHub->request('user/emails'), true);
+
+	echo 'result: <pre>'.print_r($result, true).'</pre>';
 }
 elseif(!empty($_GET['login']) && $_GET['login'] === 'github'){
 	header('Location: '.$gitHub->getAuthorizationUri());

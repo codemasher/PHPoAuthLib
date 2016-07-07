@@ -122,27 +122,11 @@ class GitHub extends OAuth2Service{
 	const SCOPE_PUBLIC_KEY_ADMIN = 'admin:public_key';
 
 	protected $API_BASE = 'https://api.github.com/';
+	protected $authorizationEndpoint = 'https://github.com/login/oauth/authorize';
+	protected $accessTokenEndpoint   = 'https://github.com/login/oauth/access_token';
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAuthorizationEndpoint(){
-		return new Uri('https://github.com/login/oauth/authorize');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAccessTokenEndpoint(){
-		return new Uri('https://github.com/login/oauth/access_token');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getAuthorizationMethod(){
-		return self::AUTHORIZATION_METHOD_QUERY_STRING;
-	}
+	protected $authorizationMethod = self::AUTHORIZATION_METHOD_QUERY_STRING;
+	protected $scopesDelimiter = ',';
 
 	/**
 	 * {@inheritdoc}
@@ -150,17 +134,19 @@ class GitHub extends OAuth2Service{
 	protected function parseAccessTokenResponse($responseBody){
 		$data = json_decode($responseBody, true);
 
-		if(null === $data || !is_array($data)){
+		if(!$data || !is_array($data)){
 			throw new TokenResponseException('Unable to parse response.');
 		}
 		elseif(isset($data['error'])){
 			throw new TokenResponseException('Error in retrieving token: "'.$data['error'].'"');
 		}
 
-		$token = new OAuth2Token();
-		$token->setAccessToken($data['access_token']);
-		// Github tokens evidently never expire...
-		$token->setEndOfLife(OAuth2Token::EOL_NEVER_EXPIRES);
+		$token = new OAuth2Token;
+
+		$token->setAccessToken($data['access_token'])
+			// Github tokens evidently never expire...
+			->setEndOfLife(OAuth2Token::EOL_NEVER_EXPIRES);
+
 		unset($data['access_token']);
 
 		$token->setExtraParams($data);
@@ -184,12 +170,5 @@ class GitHub extends OAuth2Service{
 	 */
 	protected function getExtraApiHeaders(){
 		return ['Accept' => 'application/vnd.github.beta+json'];
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getScopesDelimiter(){
-		return ',';
 	}
 }

@@ -19,7 +19,7 @@ class Twitter extends OAuth1Service{
 	protected function parseAccessTokenResponse($responseBody){
 		parse_str($responseBody, $data);
 
-		if($data === null || !is_array($data)){
+		if(!$data || !is_array($data)){
 			throw new TokenResponseException('Unable to parse response: '.$responseBody);
 		}
 		elseif(isset($data['error'])){

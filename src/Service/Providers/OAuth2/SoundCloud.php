@@ -12,33 +12,9 @@ use OAuth\Token\OAuth2Token;
 
 class SoundCloud extends OAuth2Service{
 
-	public function __construct(
-		CredentialsInterface $credentials,
-		ClientInterface $httpClient,
-		TokenStorageInterface $storage,
-		$scopes = [],
-		Uri $baseApiUri = null
-	){
-		parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri);
-
-		if(null === $baseApiUri){
-			$this->baseApiUri = new Uri('https://api.soundcloud.com/');
-		}
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAuthorizationEndpoint(){
-		return new Uri('https://soundcloud.com/connect');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAccessTokenEndpoint(){
-		return new Uri('https://api.soundcloud.com/oauth2/token');
-	}
+	protected $API_BASE = 'https://api.soundcloud.com/';
+	protected $authorizationEndpoint = 'https://soundcloud.com/connect';
+	protected $accessTokenEndpoint   = 'https://api.soundcloud.com/oauth2/token';
 
 	/**
 	 * {@inheritdoc}
@@ -46,7 +22,7 @@ class SoundCloud extends OAuth2Service{
 	protected function parseAccessTokenResponse($responseBody){
 		$data = json_decode($responseBody, true);
 
-		if(null === $data || !is_array($data)){
+		if(!$data || !is_array($data)){
 			throw new TokenResponseException('Unable to parse response.');
 		}
 		elseif(isset($data['error'])){

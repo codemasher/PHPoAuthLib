@@ -66,6 +66,8 @@ abstract class TokenAbstract implements TokenInterface{
 	 */
 	public function setExtraParams(array $extraParams){
 		$this->extraParams = $extraParams;
+
+		return $this;
 	}
 
 	/**
@@ -80,6 +82,8 @@ abstract class TokenAbstract implements TokenInterface{
 	 */
 	public function setAccessToken($accessToken){
 		$this->accessToken = $accessToken;
+
+		return $this;
 	}
 
 	/**
@@ -87,21 +91,25 @@ abstract class TokenAbstract implements TokenInterface{
 	 */
 	public function setEndOfLife($endOfLife){
 		$this->endOfLife = $endOfLife;
+
+		return $this;
 	}
 
 	/**
 	 * @param int $lifetime
 	 */
 	public function setLifetime($lifetime){
-		if(0 === $lifetime || static::EOL_NEVER_EXPIRES === $lifetime){
-			$this->endOfLife = static::EOL_NEVER_EXPIRES;
+		if($lifetime === 0 || $lifetime === self::EOL_NEVER_EXPIRES){
+			$this->endOfLife = self::EOL_NEVER_EXPIRES;
 		}
-		elseif(null !== $lifetime){
+		elseif($lifetime !== null){
 			$this->endOfLife = intval($lifetime) + time();
 		}
 		else{
-			$this->endOfLife = static::EOL_UNKNOWN;
+			$this->endOfLife = self::EOL_UNKNOWN;
 		}
+
+		return $this;
 	}
 
 	/**
@@ -109,6 +117,8 @@ abstract class TokenAbstract implements TokenInterface{
 	 */
 	public function setRefreshToken($refreshToken){
 		$this->refreshToken = $refreshToken;
+
+		return $this;
 	}
 
 	public function isExpired(){

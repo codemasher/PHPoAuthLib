@@ -2,7 +2,6 @@
 
 namespace OAuth\Service;
 
-use OAuth\_killme\CredentialsInterface;
 use OAuth\Http\Uri;
 use OAuth\Service\Exception\UnsupportedHashAlgorithmException;
 
@@ -24,18 +23,12 @@ class Signature implements SignatureInterface{
 	protected $tokenSecret = null;
 
 	/**
-	 * @param string $credentials
+	 * @param string $secret
 	 */
 	public function __construct($secret){
 		$this->secret = $secret;
 	}
 
-	/**
-	 * @param string $algorithm
-	 */
-	public function setHashingAlgorithm($algorithm){
-		$this->algorithm = $algorithm;
-	}
 
 	/**
 	 * @param string $token
@@ -74,7 +67,7 @@ class Signature implements SignatureInterface{
 		$baseString .= rawurlencode($baseUri).'&';
 		$baseString .= rawurlencode($this->buildSignatureDataString($signatureData));
 
-		return base64_encode($this->hash($baseString));
+		return base64_encode(hash_hmac('sha1', $baseString, $this->getSigningKey(), true));
 	}
 
 	/**
@@ -99,6 +92,7 @@ class Signature implements SignatureInterface{
 	 */
 	protected function getSigningKey(){
 		$signingKey = rawurlencode($this->secret).'&';
+
 		if($this->tokenSecret !== null){
 			$signingKey .= rawurlencode($this->tokenSecret);
 		}
@@ -106,21 +100,4 @@ class Signature implements SignatureInterface{
 		return $signingKey;
 	}
 
-	/**
-	 * @param string $data
-	 *
-	 * @return string
-	 *
-	 * @throws UnsupportedHashAlgorithmException
-	 */
-	protected function hash($data){
-		switch(strtoupper($this->algorithm)){
-			case 'HMAC-SHA1':
-				return hash_hmac('sha1', $data, $this->getSigningKey(), true);
-			default:
-				throw new UnsupportedHashAlgorithmException(
-					'Unsupported hashing algorithm ('.$this->algorithm.') used.'
-				);
-		}
-	}
 }

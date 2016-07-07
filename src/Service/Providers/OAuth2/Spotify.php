@@ -27,27 +27,10 @@ class Spotify extends OAuth2Service{
 	const SCOPE_USER_READ_FOLLOW           = 'user-follow-read';
 
 	protected $API_BASE = 'https://api.spotify.com/v1/';
+	protected $authorizationEndpoint = 'https://accounts.spotify.com/authorize';
+	protected $accessTokenEndpoint   = 'https://accounts.spotify.com/api/token';
 
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAuthorizationEndpoint(){
-		return new Uri('https://accounts.spotify.com/authorize');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAccessTokenEndpoint(){
-		return new Uri('https://accounts.spotify.com/api/token');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getAuthorizationMethod(){
-		return static::AUTHORIZATION_METHOD_HEADER_BEARER;
-	}
+	protected $authorizationMethod = self::AUTHORIZATION_METHOD_HEADER_BEARER;
 
 	/**
 	 * {@inheritdoc}

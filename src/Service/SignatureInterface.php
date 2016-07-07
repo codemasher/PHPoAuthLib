@@ -7,11 +7,6 @@ use OAuth\Http\Uri;
 interface SignatureInterface{
 
 	/**
-	 * @param string $algorithm
-	 */
-	public function setHashingAlgorithm($algorithm);
-
-	/**
 	 * @param string $token
 	 */
 	public function setTokenSecret($token);

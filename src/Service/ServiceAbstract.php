@@ -35,10 +35,7 @@ abstract class ServiceAbstract implements ServiceInterface{
 	 * @param ClientInterface       $httpClient
 	 * @param TokenStorageInterface $storage
 	 */
-	public function __construct(
-		ClientInterface $httpClient,
-		TokenStorageInterface $storage, $callbackURL, $key, $secret
-	){
+	public function __construct(ClientInterface $httpClient, TokenStorageInterface $storage, $callbackURL, $key, $secret){
 		$this->callbackURL = $callbackURL;
 		$this->key         = $key;
 		$this->secret      = $secret;
@@ -55,6 +52,7 @@ abstract class ServiceAbstract implements ServiceInterface{
 	 * @throws \OAuth\OauthException
 	 */
 	protected function determineRequestUriFromPath($path, Uri $baseApiUri = null){
+
 		if($path instanceof Uri){
 			$uri = $path;
 		}

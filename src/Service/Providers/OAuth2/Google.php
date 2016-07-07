@@ -125,42 +125,9 @@ class Google extends OAuth2Service{
 	const SCOPE_CLASSROOM_ROSTERS          = 'https://www.googleapis.com/auth/classroom.rosters';
 	const SCOPE_CLASSROOM_ROSTERS_READONLY = 'https://www.googleapis.com/auth/classroom.rosters.readonly';
 
-	protected $accessType = 'online';
-
-	public function __construct(
-		CredentialsInterface $credentials,
-		ClientInterface $httpClient,
-		TokenStorageInterface $storage,
-		$scopes = [],
-		Uri $baseApiUri = null
-	){
-		parent::__construct($credentials, $httpClient, $storage, $scopes, $baseApiUri, true);
-
-		if(null === $baseApiUri){
-			$this->baseApiUri = new Uri('https://www.googleapis.com/oauth2/v1/');
-		}
-	}
-
-	public function setAccessType($accessType){
-		if(!in_array($accessType, ['online', 'offline'], true)){
-			throw new InvalidAccessTypeException('Invalid accessType, expected either online or offline');
-		}
-		$this->accessType = $accessType;
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAuthorizationEndpoint(){
-		return new Uri('https://accounts.google.com/o/oauth2/auth?access_type='.$this->accessType);
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAccessTokenEndpoint(){
-		return new Uri('https://accounts.google.com/o/oauth2/token');
-	}
+	protected $API_BASE = 'https://www.googleapis.com/oauth2/v1/';
+	protected $authorizationEndpoint = 'https://accounts.google.com/o/oauth2/auth?access_type=online'; // todo: access type
+	protected $accessTokenEndpoint   = 'https://accounts.google.com/o/oauth2/token';
 
 	/**
 	 * {@inheritdoc}

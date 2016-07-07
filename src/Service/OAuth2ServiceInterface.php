@@ -10,6 +10,9 @@ use OAuth\Token\TokenInterface;
  */
 interface OAuth2ServiceInterface extends ServiceInterface{
 
+	/** @const OAUTH_VERSION */
+	const OAUTH_VERSION = 2;
+
 	/**
 	 * Authorization methods for various services
 	 */

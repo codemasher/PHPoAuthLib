@@ -6,13 +6,9 @@ use OAuth\Http\ClientInterface;
 use OAuth\Http\Exception\TokenResponseException;
 use OAuth\Http\Uri;
 use OAuth\Storage\TokenStorageInterface;
-use OAuth\Token\OAuth1Token;
 use OAuth\Token\OAuth1TokenInterface;
 
 abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInterface{
-
-	/** @const OAUTH_VERSION */
-	const OAUTH_VERSION = 1;
 
 	/** @var SignatureInterface */
 	protected $signature;
@@ -30,21 +26,19 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 		parent::__construct($httpClient, $storage, $callbackURL, $key, $secret);
 
 		$this->baseApiUri = new Uri($this->API_BASE);
-
 		$this->signature = new Signature($secret);
-		$this->signature->setHashingAlgorithm('HMAC-SHA1');
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
 	public function getRequestToken(){
-		$authorizationHeader = ['Authorization' => $this->buildAuthorizationHeaderForTokenRequest()];
-		$headers             = array_merge($authorizationHeader, $this->getExtraOAuthHeaders());
+		$token = $this->parseRequestTokenResponse($this->httpClient->retrieveResponse(
+			new Uri($this->requestTokenEndpoint),
+			[],
+			array_merge(['Authorization' => $this->buildAuthorizationHeaderForTokenRequest()], $this->getExtraOAuthHeaders())
+		));
 
-		$responseBody = $this->httpClient->retrieveResponse(new Uri($this->requestTokenEndpoint), [], $headers);
-
-		$token = $this->parseRequestTokenResponse($responseBody);
 		$this->storage->storeAccessToken($this->service(), $token);
 
 		return $token;
@@ -56,6 +50,7 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	public function getAuthorizationUri(array $additionalParameters = []){
 		// Build the url
 		$url = new Uri($this->authorizationEndpoint);
+
 		foreach($additionalParameters as $key => $val){
 			$url->addToQuery($key, $val);
 		}
@@ -67,30 +62,30 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	 * {@inheritDoc}
 	 */
 	public function getAccessToken($token, $verifier, $tokenSecret = null){
-		if(is_null($tokenSecret)){
-			$storedRequestToken = $this->storage->retrieveAccessToken($this->service());
-			$tokenSecret        = $storedRequestToken->getRequestTokenSecret();
+
+		if(!$tokenSecret){
+			$tokenSecret = $this->storage->retrieveAccessToken($this->service())->getRequestTokenSecret();
 		}
+
 		$this->signature->setTokenSecret($tokenSecret);
 
 		$bodyParams = [
 			'oauth_verifier' => $verifier,
 		];
 
-		$authorizationHeader = [
-			'Authorization' => $this->buildAuthorizationHeaderForAPIRequest(
-				'POST',
-				new Uri($this->accessTokenEndpoint),
-				$this->storage->retrieveAccessToken($this->service()),
-				$bodyParams
-			),
-		];
+		$token = $this->parseAccessTokenResponse($this->httpClient->retrieveResponse(
+			new Uri($this->accessTokenEndpoint),
+			$bodyParams,
+			array_merge([
+				'Authorization' => $this->buildAuthorizationHeaderForAPIRequest(
+					'POST',
+					new Uri($this->accessTokenEndpoint),
+					$this->storage->retrieveAccessToken($this->service()),
+					$bodyParams
+				),
+			], $this->getExtraOAuthHeaders())
+		));
 
-		$headers = array_merge($authorizationHeader, $this->getExtraOAuthHeaders());
-
-		$responseBody = $this->httpClient->retrieveResponse(new Uri($this->accessTokenEndpoint), $bodyParams, $headers);
-
-		$token = $this->parseAccessTokenResponse($responseBody);
 		$this->storage->storeAccessToken($this->service(), $token);
 
 		return $token;
@@ -122,15 +117,15 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	public function request($path, $method = 'GET', $body = null, array $extraHeaders = []){
 		$uri = $this->determineRequestUriFromPath($path, $this->baseApiUri);
 
-		/** @var $token OAuth1Token */
-		$token               = $this->storage->retrieveAccessToken($this->service());
-		$extraHeaders        = array_merge($this->getExtraApiHeaders(), $extraHeaders);
-		$authorizationHeader = [
-			'Authorization' => $this->buildAuthorizationHeaderForAPIRequest($method, $uri, $token, $body),
-		];
-		$headers             = array_merge($authorizationHeader, $extraHeaders);
-
-		return $this->httpClient->retrieveResponse($uri, $body, $headers, $method);
+		return $this->httpClient->retrieveResponse(
+			$uri,
+			$body,
+			array_merge(
+				['Authorization' => $this->buildAuthorizationHeaderForAPIRequest($method, $uri, $this->storage->retrieveAccessToken($this->service()), $body)],
+				array_merge($this->getExtraApiHeaders(), $extraHeaders)
+			),
+			$method
+		);
 	}
 
 	/**
@@ -159,16 +154,12 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	 * @return string
 	 */
 	protected function buildAuthorizationHeaderForTokenRequest(array $extraParameters = []){
-		$parameters                    = $this->getBasicAuthorizationHeaderInfo();
-		$parameters                    = array_merge($parameters, $extraParameters);
-		$parameters['oauth_signature'] = $this->signature->getSignature(
-			new Uri($this->requestTokenEndpoint),
-			$parameters,
-			'POST'
-		);
+		$parameters = array_merge($this->getBasicAuthorizationHeaderInfo(), $extraParameters);
+
+		$parameters['oauth_signature'] = $this->signature->getSignature(new Uri($this->requestTokenEndpoint), $parameters, 'POST');
 
 		$authorizationHeader = 'OAuth ';
-		$delimiter           = '';
+		$delimiter = '';
 		foreach($parameters as $key => $value){
 			$authorizationHeader .= $delimiter.rawurlencode($key).'="'.rawurlencode($value).'"';
 
@@ -189,15 +180,17 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	 * @return string
 	 */
 	protected function buildAuthorizationHeaderForAPIRequest($method, Uri $uri, OAuth1TokenInterface $token, $bodyParams = null){
+
 		$this->signature->setTokenSecret($token->getAccessTokenSecret());
 		$authParameters = $this->getBasicAuthorizationHeaderInfo();
+
 		if(isset($authParameters['oauth_callback'])){
 			unset($authParameters['oauth_callback']);
 		}
 
 		$authParameters = array_merge($authParameters, ['oauth_token' => $token->getAccessToken()]);
 
-		$signatureParams                   = (is_array($bodyParams)) ? array_merge($authParameters, $bodyParams) : $authParameters;
+		$signatureParams = (is_array($bodyParams)) ? array_merge($authParameters, $bodyParams) : $authParameters;
 		$authParameters['oauth_signature'] = $this->signature->getSignature($uri, $signatureParams, $method);
 
 		if(is_array($bodyParams) && isset($bodyParams['oauth_session_handle'])){
@@ -206,7 +199,7 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 		}
 
 		$authorizationHeader = 'OAuth ';
-		$delimiter           = '';
+		$delimiter = '';
 
 		foreach($authParameters as $key => $value){
 			$authorizationHeader .= $delimiter.rawurlencode($key).'="'.rawurlencode($value).'"';
@@ -248,7 +241,7 @@ abstract class OAuth1Service extends ServiceAbstract implements OAuth1ServiceInt
 	protected function parseRequestTokenResponse($responseBody){
 		parse_str($responseBody, $data);
 
-		if($data === null || !is_array($data)){
+		if(!$data || !is_array($data)){
 			throw new TokenResponseException('Unable to parse response.');
 		}
 		elseif(!isset($data['oauth_callback_confirmed']) || $data['oauth_callback_confirmed'] !== 'true'){

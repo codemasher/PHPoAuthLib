@@ -2,7 +2,6 @@
 
 namespace OAuth\Service\Providers\OAuth2;
 
-use OAuth\_killme\CredentialsInterface;
 use OAuth\Http\ClientInterface;
 use OAuth\Http\Exception\TokenResponseException;
 use OAuth\Http\Uri;
@@ -12,6 +11,7 @@ use OAuth\Storage\TokenStorageInterface;
 use OAuth\Token\OAuth2Token;
 
 class Facebook extends OAuth2Service{
+	protected $scopesDelimiter = ',';
 
 	/**
 	 * Facebook www url - used to build dialog urls
@@ -203,10 +203,4 @@ class Facebook extends OAuth2Service{
 		return empty($this->apiVersion) ? '' : '/v'.$this->apiVersion;
 	}
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getScopesDelimiter(){
-		return ',';
-	}
 }

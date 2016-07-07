@@ -10,6 +10,9 @@ use OAuth\Token\TokenInterface;
  */
 interface OAuth1ServiceInterface extends ServiceInterface{
 
+	/** @const OAUTH_VERSION */
+	const OAUTH_VERSION = 1;
+
 	/**
 	 * Retrieves and stores/returns the OAuth1 request token obtained from the service.
 	 *

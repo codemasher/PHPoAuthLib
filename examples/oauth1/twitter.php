@@ -13,11 +13,10 @@
 
 require_once __DIR__.'/../bootstrap.php';
 
-$storage = new \OAuth\Storage\Session;
 
 // Instantiate the twitter service using the credentials, http client and storage mechanism for the token
 $twitterService = new \OAuth\Service\Providers\OAuth1\Twitter(
-	new \OAuth\Http\CurlClient,
+	$httpClient,
 	$storage,
 	$currentUri->getAbsoluteUri(),
 	getenv('TWITTER_KEY'),
@@ -28,11 +27,7 @@ if(!empty($_GET['oauth_token'])){
 	$token = $storage->retrieveAccessToken('Twitter');
 
 	// This was a callback request from twitter, get the token
-	$twitterService->getAccessToken(
-		$_GET['oauth_token'],
-		$_GET['oauth_verifier'],
-		$token->getRequestTokenSecret()
-	);
+	$twitterService->getAccessToken($_GET['oauth_token'], $_GET['oauth_verifier'], $token->getRequestTokenSecret());
 
 	// Send a request now that we have access token
 	$result = json_decode($twitterService->request('account/verify_credentials.json'));

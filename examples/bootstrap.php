@@ -30,3 +30,6 @@ ini_set('date.timezone', 'Europe/Amsterdam');
 $uriFactory = new UriFactory();
 $currentUri = $uriFactory->createFromSuperGlobalArray($_SERVER);
 $currentUri->setQuery('');
+
+$httpClient = new \OAuth\Http\CurlClient;
+$storage = new \OAuth\Storage\Session;

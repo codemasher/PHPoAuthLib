@@ -14,8 +14,8 @@ require_once __DIR__.'/../bootstrap.php';
 
 // Instantiate the Spotify service using the credentials, http client and storage mechanism for the token
 $spotifyService = new \OAuth\Service\Providers\OAuth2\Spotify(
-	new \OAuth\Http\CurlClient,
-	new \OAuth\Storage\Session,
+	$httpClient,
+	$storage,
 	$currentUri->getAbsoluteUri(),
 	getenv('SPOTIFY_KEY'),
 	getenv('SPOTIFY_SECRET')

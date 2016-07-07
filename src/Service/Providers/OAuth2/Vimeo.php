@@ -56,47 +56,11 @@ class Vimeo extends OAuth2Service{
 	// Upload a video
 	const SCOPE_UPLOAD = 'upload';
 
-	public function __construct(
-		CredentialsInterface $credentials,
-		ClientInterface $httpClient,
-		TokenStorageInterface $storage,
-		$scopes = [],
-		Uri $baseApiUri = null
-	){
-		parent::__construct(
-			$credentials,
-			$httpClient,
-			$storage,
-			$scopes,
-			$baseApiUri,
-			true
-		);
 
-		if(null === $baseApiUri){
-			$this->baseApiUri = new Uri('https://api.vimeo.com/');
-		}
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAuthorizationEndpoint(){
-		return new Uri('https://api.vimeo.com/oauth/authorize');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getAccessTokenEndpoint(){
-		return new Uri('https://api.vimeo.com/oauth/access_token');
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getAuthorizationMethod(){
-		return static::AUTHORIZATION_METHOD_HEADER_BEARER;
-	}
+	protected $API_BASE = 'https://api.vimeo.com/';
+	protected $authorizationEndpoint = 'https://api.vimeo.com/oauth/authorize';
+	protected $accessTokenEndpoint   = 'https://api.vimeo.com/oauth/access_token';
+	protected $authorizationMethod = self::AUTHORIZATION_METHOD_HEADER_BEARER;
 
 	/**
 	 * {@inheritdoc}
@@ -122,7 +86,7 @@ class Vimeo extends OAuth2Service{
 		$token->setAccessToken($data['access_token']);
 
 		if(isset($data['expires_in'])){
-			$token->setLifeTime($data['expires_in']);
+			$token->setLifetime($data['expires_in']);
 			unset($data['expires_in']);
 		}
 		if(isset($data['refresh_token'])){
