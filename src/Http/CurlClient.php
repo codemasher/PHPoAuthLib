@@ -58,16 +58,7 @@ class CurlClient extends AbstractHttpClient{
 	 * @throws \OAuth\OAuthException
 	 * @throws \InvalidArgumentException
 	 */
-	public function retrieveResponse(
-		$endpoint,
-		$requestBody,
-		array $extraHeaders = [],
-		$method = 'POST'
-	){
-
-		$endpoint = new Uri($endpoint);
-
-		// Normalize method name
+	public function retrieveResponse($endpoint, $requestBody, array $extraHeaders = [], $method = 'POST'){
 		$method = strtoupper($method);
 
 		$this->normalizeHeaders($extraHeaders);
@@ -80,12 +71,12 @@ class CurlClient extends AbstractHttpClient{
 			$extraHeaders['Content-Type'] = 'Content-Type: application/x-www-form-urlencoded';
 		}
 
-		$extraHeaders['Host']       = 'Host: '.$endpoint->getHost();
+		$extraHeaders['Host']       = 'Host: '.parse_url($endpoint, PHP_URL_HOST);
 		$extraHeaders['Connection'] = 'Connection: close';
 
 		$ch = curl_init();
 
-		curl_setopt($ch, CURLOPT_URL, $endpoint->getAbsoluteUri());
+		curl_setopt($ch, CURLOPT_URL, $endpoint);
 
 		if($method === 'POST' || $method === 'PUT'){
 			if($requestBody && is_array($requestBody)){

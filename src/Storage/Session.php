@@ -67,9 +67,7 @@ class Session implements TokenStorageInterface{
 			$_SESSION[$this->sessionVariableName][$service] = $serializedToken;
 		}
 		else{
-			$_SESSION[$this->sessionVariableName] = [
-				$service => $serializedToken,
-			];
+			$_SESSION[$this->sessionVariableName] = [$service => $serializedToken,];
 		}
 
 		// allow chaining

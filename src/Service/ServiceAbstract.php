@@ -53,7 +53,7 @@ abstract class ServiceAbstract implements ServiceInterface{
 	/**
 	 * @param array $additionalParameters
 	 *
-	 * @return \OAuth\Http\Uri
+	 * @return string
 	 */
 	public function getAuthorizationURL(array $additionalParameters = []){
 

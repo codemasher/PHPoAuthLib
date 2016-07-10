@@ -55,15 +55,16 @@ abstract class AbstractHttpClient implements HttpClientInterface{
 
 	/**
 	 * @param array $headers
+	 *
+	 * @return HttpClientInterface
 	 */
 	public function normalizeHeaders(&$headers){
 		// Normalize headers
-		array_walk(
-			$headers,
-			function(&$val, &$key){
-				$key = ucfirst(strtolower($key));
-				$val = ucfirst(strtolower($key)).': '.$val;
-			}
-		);
+		array_walk($headers, function(&$val, &$key){
+			$key = ucfirst(strtolower($key));
+			$val = ucfirst(strtolower($key)).': '.$val;
+		});
+
+		return $this;
 	}
 }

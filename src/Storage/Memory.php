@@ -12,19 +12,14 @@ use OAuth\Token;
 class Memory implements TokenStorageInterface{
 
 	/**
-	 * @var object|\OAuth\Token
+	 * @var array
 	 */
-	protected $tokens;
+	protected $tokens = [];
 
 	/**
 	 * @var array
 	 */
-	protected $states;
-
-	public function __construct(){
-		$this->tokens = [];
-		$this->states = [];
-	}
+	protected $states = [];
 
 	/**
 	 * {@inheritDoc}

@@ -13,7 +13,7 @@ interface ServiceInterface{
 	 * Sends an authenticated API request to the path provided.
 	 * If the path provided is not an absolute URI, the base API Uri (service-specific) will be used.
 	 *
-	 * @param string|\OAuth\Http\Uri $path
+	 * @param string                 $path
 	 * @param string                 $method       HTTP method
 	 * @param array                  $body         Request body if applicable (an associative array will
 	 *                                             automatically be converted into a urlencoded body)
@@ -29,7 +29,7 @@ interface ServiceInterface{
 	 *
 	 * @param array $additionalParameters
 	 *
-	 * @return \OAuth\Http\Uri
+	 * @return string
 	 */
 	public function getAuthorizationURL(array $additionalParameters = []);
 
