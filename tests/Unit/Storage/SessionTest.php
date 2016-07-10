@@ -2,11 +2,10 @@
 
 namespace OAuthTest\Unit\Storage;
 
-use OAuth\Storage\Exception\TokenNotFoundException;
+use OAuth\OAuthException;
 use OAuth\Storage\Session;
 use OAuth\Storage\TokenStorageInterface;
-use OAuth\Token\TokenAbstract;
-use OAuth\Token\TokenInterface;
+use OAuth\Token;
 
 class SessionTest extends \PHPUnit_Framework_TestCase{
 
@@ -73,7 +72,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 
 		$this->assertInstanceOf(
 			Session::class,
-			$storage->storeAccessToken('foo', $this->getMock(TokenInterface::class))
+			$storage->storeAccessToken('foo', $this->getMock(Token::class))
 		);
 	}
 
@@ -90,7 +89,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 
 		$this->assertInstanceOf(
 			Session::class,
-			$storage->storeAccessToken('foo', $this->getMock(TokenInterface::class))
+			$storage->storeAccessToken('foo', $this->getMock(Token::class))
 		);
 	}
 
@@ -105,9 +104,9 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	public function testRetrieveAccessTokenValid(){
 		$storage = new Session();
 
-		$storage->storeAccessToken('foo', $this->getMock(TokenInterface::class));
+		$storage->storeAccessToken('foo', $this->getMock(Token::class));
 
-		$this->assertInstanceOf(TokenInterface::class, $storage->retrieveAccessToken('foo'));
+		$this->assertInstanceOf(Token::class, $storage->retrieveAccessToken('foo'));
 	}
 
 	/**
@@ -118,7 +117,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	 * @runInSeparateProcess
 	 */
 	public function testRetrieveAccessTokenThrowsExceptionWhenTokenIsNotFound(){
-		$this->setExpectedException(TokenNotFoundException::class);
+		$this->setExpectedException(OAuthException::class);
 
 		$storage = new Session();
 
@@ -135,7 +134,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	public function testHasAccessTokenTrue(){
 		$storage = new Session();
 
-		$storage->storeAccessToken('foo', $this->getMock(TokenInterface::class));
+		$storage->storeAccessToken('foo', $this->getMock(Token::class));
 
 		$this->assertTrue($storage->hasAccessToken('foo'));
 	}
@@ -174,7 +173,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	public function testClearTokenSet(){
 		$storage = new Session();
 
-		$storage->storeAccessToken('foo', $this->getMock(TokenInterface::class));
+		$storage->storeAccessToken('foo', $this->getMock(Token::class));
 
 		$this->assertTrue($storage->hasAccessToken('foo'));
 		$this->assertInstanceOf(Session::class, $storage->clearToken('foo'));
@@ -191,8 +190,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	public function testClearAllTokens(){
 		$storage = new Session();
 
-		$storage->storeAccessToken('foo', $this->getMock(TokenInterface::class));
-		$storage->storeAccessToken('bar', $this->getMock(TokenInterface::class));
+		$storage->storeAccessToken('foo', $this->getMock(Token::class));
+		$storage->storeAccessToken('bar', $this->getMock(Token::class));
 
 		$this->assertTrue($storage->hasAccessToken('foo'));
 		$this->assertTrue($storage->hasAccessToken('bar'));
@@ -220,7 +219,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 	 * @runInSeparateProcess
 	 */
 	public function testSerializeUnserialize(){
-		$mock = $this->getMock(TokenAbstract::class, ['__sleep']);
+		$mock = $this->getMock(Token::class, ['__sleep']);
 		$mock->expects($this->once())
 		     ->method('__sleep')
 		     ->will($this->returnValue(['accessToken']))
@@ -230,6 +229,6 @@ class SessionTest extends \PHPUnit_Framework_TestCase{
 		$storage->storeAccessToken('foo', $mock);
 		$retrievedToken = $storage->retrieveAccessToken('foo');
 
-		$this->assertInstanceOf(TokenAbstract::class, $retrievedToken);
+		$this->assertInstanceOf(Token::class, $retrievedToken);
 	}
 }

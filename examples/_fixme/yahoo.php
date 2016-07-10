@@ -37,7 +37,7 @@ if(!empty($_GET['oauth_token'])){
 	$yahooService->requestAccessToken(
 		$_GET['oauth_token'],
 		$_GET['oauth_verifier'],
-		$token->getRequestTokenSecret()
+		$token->requestTokenSecret
 	);
 
 	// Send a request now that we have access token
@@ -50,7 +50,7 @@ elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
 	// extra request needed for oauth1 to request a request token :-)
 	$token = $yahooService->requestRequestToken();
 
-	$url = $yahooService->getAuthorizationUri(['oauth_token' => $token->getRequestToken()]);
+	$url = $yahooService->getAuthorizationUri(['oauth_token' => $token->requestToken]);
 	header('Location: '.$url);
 }
 else{

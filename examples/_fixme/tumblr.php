@@ -38,14 +38,14 @@ if(!empty($_GET['oauth_token'])){
 	$token = $storage->retrieveAccessToken('Tumblr');
 
 	// This was a callback request from tumblr, get the token
-	$tumblrService->getAccessToken(
+	$tumblrService->getOauth1AccessToken(
 		$_GET['oauth_token'],
 		$_GET['oauth_verifier'],
-		$token->getRequestTokenSecret()
+		$token->requestTokenSecret
 	);
 
 	// Send a request now that we have access token
-	$result = json_decode($tumblrService->request('user/info'));
+	$result = json_decode($tumblrService->apiRequest('user/info'));
 
 	echo 'result: <pre>'.print_r($result, true).'</pre>';
 
@@ -54,7 +54,7 @@ elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
 	// extra request needed for oauth1 to request a request token :-)
 	$token = $tumblrService->getRequestToken();
 
-	$url = $tumblrService->getAuthorizationUri(['oauth_token' => $token->getRequestToken()]);
+	$url = $tumblrService->getAuthorizationURL(['oauth_token' => $token->requestToken]);
 	header('Location: '.$url);
 }
 else{

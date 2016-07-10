@@ -2,7 +2,7 @@
 
 namespace OAuth\Http;
 
-use OAuth\Http\Exception\TokenResponseException;
+use OAuth\OAuthException;
 
 /**
  * Client implementation for cURL
@@ -48,22 +48,25 @@ class CurlClient extends AbstractHttpClient{
 	 * Any implementing HTTP providers should send a request to the provided endpoint with the parameters.
 	 * They should return, in string form, the response body and throw an exception on error.
 	 *
-	 * @param Uri    $endpoint
+	 * @param string $endpoint
 	 * @param mixed  $requestBody
 	 * @param array  $extraHeaders
 	 * @param string $method
 	 *
 	 * @return string
 	 *
-	 * @throws TokenResponseException
+	 * @throws \OAuth\OAuthException
 	 * @throws \InvalidArgumentException
 	 */
 	public function retrieveResponse(
-		Uri $endpoint,
+		$endpoint,
 		$requestBody,
 		array $extraHeaders = [],
 		$method = 'POST'
 	){
+
+		$endpoint = new Uri($endpoint);
+
 		// Normalize method name
 		$method = strtoupper($method);
 
@@ -129,9 +132,9 @@ class CurlClient extends AbstractHttpClient{
 			$errStr = curl_error($ch);
 			curl_close($ch);
 			if(empty($errStr)){
-				throw new TokenResponseException('Failed to request resource.', $responseCode);
+				throw new OAuthException('Failed to request resource.', $responseCode);
 			}
-			throw new TokenResponseException('cURL Error # '.$errNo.': '.$errStr, $responseCode);
+			throw new OAuthException('cURL Error # '.$errNo.': '.$errStr, $responseCode);
 		}
 
 		curl_close($ch);

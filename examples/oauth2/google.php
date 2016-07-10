@@ -1,47 +1,31 @@
 <?php
 
-/**
- * Example of retrieving an authentication token of the Google service
- *
- * PHP version 5.4
- *
- * @author     David Desberg <david@daviddesberg.com>
- * @author     Pieter Hordijk <info@pieterhordijk.com>
- * @copyright  Copyright (c) 2012 The authors
- * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
- */
-
-use OAuth\Service\Providers\OAuth2\Google;
-
 require_once __DIR__.'/../bootstrap.php';
 
-
+use OAuth\Service\Providers\OAuth2\Google;
 
 $googleService = new Google(
 	$httpClient,
 	$storage,
-	$currentUri->getAbsoluteUri(),
-	getenv('GOOGLE_KEY'),
-	getenv('GOOGLE_SECRET'),
-	[Google::SCOPE_EMAIL, Google::SCOPE_PROFILE]
+	new \OAuth\Credentials([
+		'key'         => getenv('GOOGLE_KEY'),
+		'secret'      => getenv('GOOGLE_SECRET'),
+		'callbackURL' => getenv('GOOGLE_CALLBACK_URL'),
+	]),
+	['email', 'profile']
 );
 
 
 if(!empty($_GET['code'])){
-	// retrieve the CSRF state parameter
-	$state = isset($_GET['state']) ? $_GET['state'] : null;
+	$googleService->getOAuth2AccessToken($_GET['code'], isset($_GET['state']) ? $_GET['state'] : null);
 
-	// This was a callback request from google, get the token
-	$googleService->requestAccessToken($_GET['code'], $state);
-
-	// Send a request with it
-	$result = json_decode($googleService->request('userinfo'), true);
-
-	echo 'result: <pre>'.print_r($result, true).'</pre>';
+	echo 'result: <pre>'.print_r(json_decode($googleService->apiRequest('userinfo')), true).'</pre>';
 }
 elseif(!empty($_GET['login']) && $_GET['login'] === 'google'){
-	header('Location: '.$googleService->getAuthorizationUri());
+	header('Location: '.$googleService->getAuthorizationURL());
 }
 else{
-	echo '<a href="'.$currentUri->getRelativeUri().'?login=google">Login with Google!</a>';
+	echo '<a href="?login=google">Login with Google!</a>';
 }
+
+exit;

@@ -34,17 +34,17 @@ $paypalService = $serviceFactory->createService('paypal', $credentials, $storage
 
 if(!empty($_GET['code'])){
 	// This was a callback request from PayPal, get the token
-	$token = $paypalService->requestAccessToken($_GET['code']);
+	$token = $paypalService->getOAuth2AccessToken($_GET['code']);
 
 	// Send a request with it
-	$result = json_decode($paypalService->request('/identity/openidconnect/userinfo/?schema=openid'), true);
+	$result = json_decode($paypalService->apiRequest('/identity/openidconnect/userinfo/?schema=openid'), true);
 
 	// Show some of the resultant data
 	echo 'Your unique PayPal user id is: '.$result['user_id'].' and your name is '.$result['name'];
 
 }
 elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
-	$url = $paypalService->getAuthorizationUri();
+	$url = $paypalService->getAuthorizationURL();
 	header('Location: '.$url);
 }
 else{

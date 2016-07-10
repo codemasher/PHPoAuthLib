@@ -2,9 +2,8 @@
 
 namespace OAuth\Service\Providers\OAuth1;
 
-use OAuth\Http\Exception\TokenResponseException;
+use OAuth\Http\Uri;
 use OAuth\Service\OAuth1Service;
-use OAuth\Token\OAuth1Token;
 
 class Flickr extends OAuth1Service{
 
@@ -15,29 +14,8 @@ class Flickr extends OAuth1Service{
 	protected $authorizationEndpoint = 'https://www.flickr.com/services/oauth/authorize';
 	protected $accessTokenEndpoint   = 'https://www.flickr.com/services/oauth/access_token';
 
-	protected function parseAccessTokenResponse($responseBody){
-		parse_str($responseBody, $data);
-		if($data === null || !is_array($data)){
-			throw new TokenResponseException('Unable to parse response.');
-		}
-		elseif(isset($data['error'])){
-			throw new TokenResponseException('Error in retrieving token: "'.$data['error'].'"');
-		}
-
-		$token = new OAuth1Token();
-		$token->setRequestToken($data['oauth_token']);
-		$token->setRequestTokenSecret($data['oauth_token_secret']);
-		$token->setAccessToken($data['oauth_token']);
-		$token->setAccessTokenSecret($data['oauth_token_secret']);
-		$token->setEndOfLife(OAuth1Token::EOL_NEVER_EXPIRES);
-		unset($data['oauth_token'], $data['oauth_token_secret']);
-		$token->setExtraParams($data);
-
-		return $token;
-	}
-
-	public function request($path, $method = 'GET', $body = null, array $extraHeaders = []){
-		$uri = $this->determineRequestUriFromPath('/', $this->baseApiUri);
+	public function apiRequest($path, $method = 'GET', $body = null, array $extraHeaders = []){
+		$uri = new Uri($this->API_BASE); // todo: Uri
 		$uri->addToQuery('method', $path);
 
 		if(!empty($this->format)){
@@ -48,8 +26,8 @@ class Flickr extends OAuth1Service{
 			}
 		}
 
-		$token               = $this->storage->retrieveAccessToken($this->service());
-		$extraHeaders        = array_merge($this->getExtraApiHeaders(), $extraHeaders);
+		$token               = $this->storage->retrieveAccessToken($this->serviceName);
+		$extraHeaders        = array_merge($this->extraApiHeaders, $extraHeaders);
 		$authorizationHeader = [
 			'Authorization' => $this->buildAuthorizationHeaderForAPIRequest($method, $uri, $token, $body),
 		];
@@ -59,30 +37,30 @@ class Flickr extends OAuth1Service{
 	}
 
 	public function requestRest($path, $method = 'GET', $body = null, array $extraHeaders = []){
-		return $this->request($path, $method, $body, $extraHeaders);
+		return $this->apiRequest($path, $method, $body, $extraHeaders);
 	}
 
 	public function requestXmlrpc($path, $method = 'GET', $body = null, array $extraHeaders = []){
 		$this->format = 'xmlrpc';
 
-		return $this->request($path, $method, $body, $extraHeaders);
+		return $this->apiRequest($path, $method, $body, $extraHeaders);
 	}
 
 	public function requestSoap($path, $method = 'GET', $body = null, array $extraHeaders = []){
 		$this->format = 'soap';
 
-		return $this->request($path, $method, $body, $extraHeaders);
+		return $this->apiRequest($path, $method, $body, $extraHeaders);
 	}
 
 	public function requestJson($path, $method = 'GET', $body = null, array $extraHeaders = []){
 		$this->format = 'json';
 
-		return $this->request($path, $method, $body, $extraHeaders);
+		return $this->apiRequest($path, $method, $body, $extraHeaders);
 	}
 
 	public function requestPhp($path, $method = 'GET', $body = null, array $extraHeaders = []){
 		$this->format = 'php_serial';
 
-		return $this->request($path, $method, $body, $extraHeaders);
+		return $this->apiRequest($path, $method, $body, $extraHeaders);
 	}
 }

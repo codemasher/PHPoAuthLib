@@ -2,8 +2,7 @@
 
 namespace OAuth\Storage;
 
-use OAuth\Storage\Exception\TokenNotFoundException;
-use OAuth\Token\TokenInterface;
+use OAuth\Token;
 
 /**
  * All token storage providers must implement this interface.
@@ -13,19 +12,19 @@ interface TokenStorageInterface{
 	/**
 	 * @param string $service
 	 *
-	 * @return TokenInterface
+	 * @return Token
 	 *
-	 * @throws TokenNotFoundException
+	 * @throws \OAuth\OAuthException
 	 */
 	public function retrieveAccessToken($service);
 
 	/**
-	 * @param string         $service
-	 * @param TokenInterface $token
+	 * @param string       $service
+	 * @param \OAuth\Token $token
 	 *
 	 * @return TokenStorageInterface
 	 */
-	public function storeAccessToken($service, TokenInterface $token);
+	public function storeAccessToken($service, Token $token);
 
 	/**
 	 * @param string $service

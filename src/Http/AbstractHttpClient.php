@@ -5,7 +5,7 @@ namespace OAuth\Http;
 /**
  * Abstract HTTP client
  */
-abstract class AbstractHttpClient implements ClientInterface{
+abstract class AbstractHttpClient implements HttpClientInterface{
 
 	/**
 	 * @var string The user agent string passed to services
@@ -34,7 +34,7 @@ abstract class AbstractHttpClient implements ClientInterface{
 	/**
 	 * @param int $redirects Maximum redirects for client
 	 *
-	 * @return ClientInterface
+	 * @return HttpClientInterface
 	 */
 	public function setMaxRedirects($redirects){
 		$this->maxRedirects = $redirects;
@@ -45,7 +45,7 @@ abstract class AbstractHttpClient implements ClientInterface{
 	/**
 	 * @param int $timeout Request timeout time for client in seconds
 	 *
-	 * @return ClientInterface
+	 * @return HttpClientInterface
 	 */
 	public function setTimeout($timeout){
 		$this->timeout = $timeout;

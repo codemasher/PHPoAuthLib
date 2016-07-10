@@ -1,43 +1,30 @@
 <?php
 
-/**
- * Vimeo service.
- *
- * Example of retrieving an authentication token of the vimeo service
- *
- * @author      Pedro Amorim <contact@pamorim.fr>
- * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
- * @link        https://developer.vimeo.com/api/authentication
- */
-
-use OAuth\Service\Providers\OAuth2\Vimeo;
-
 require_once __DIR__.'/../bootstrap.php';
 
 $vimeoService = new \OAuth\Service\Providers\OAuth2\Vimeo(
 	$httpClient,
 	$storage,
-	$currentUri->getAbsoluteUri(),
-	getenv('VIMEO_KEY'),
-	getenv('VIMEO_SECRET'),
-	[Vimeo::SCOPE_PUBLIC, Vimeo::SCOPE_PRIVATE]
+	new \OAuth\Credentials([
+		'key'         => getenv('VIMEO_KEY'),
+		'secret'      => getenv('VIMEO_SECRET'),
+		'callbackURL' => getenv('VIMEO_CALLBACK_URL'),
+	]),
+	['public', 'private']
 );
 
 
 if(!empty($_GET['code'])){
-	// retrieve the CSRF state parameter
-	$state = isset($_GET['state']) ? $_GET['state'] : null;
-	// This was a callback request from vimeo, get the token
-	$token = $vimeoService->requestAccessToken($_GET['code'], $state);
-	// Send a request now that we have access token
-	$result = json_decode($vimeoService->request('/me'));
-	// Show some of the resultant data
-	echo 'result: <pre>'.print_r($result, true).'</pre>';
+	$token = $vimeoService->getOAuth2AccessToken($_GET['code'], isset($_GET['state']) ? $_GET['state'] : null);
+
+	echo 'result: <pre>'.print_r(json_decode($vimeoService->apiRequest('me')), true).'</pre>';
 
 }
 elseif(!empty($_GET['login']) && $_GET['login'] === 'vimeo'){
-      header('Location: '.$vimeoService->getAuthorizationUri());
+      header('Location: '.$vimeoService->getAuthorizationURL());
 }
 else{
-	echo '<a href="'.$currentUri->getRelativeUri().'?login=vimeo">Login with Vimeo!</a>';
+	echo '<a href="?login=vimeo">Login with Vimeo!</a>';
 }
+
+exit;

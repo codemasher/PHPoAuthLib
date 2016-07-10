@@ -47,11 +47,11 @@ switch($step){
 	case 1:
 
 		if($token = $flickrService->getRequestToken()){
-			$oauth_token = $token->getAccessToken();
-			$secret      = $token->getAccessTokenSecret();
+			$oauth_token = $token->accessToken;
+			$secret      = $token->accessTokenSecret;
 
 			if($oauth_token && $secret){
-				$url = $flickrService->getAuthorizationUri(['oauth_token' => $oauth_token, 'perms' => 'write']);
+				$url = $flickrService->getAuthorizationURL(['oauth_token' => $oauth_token, 'perms' => 'write']);
 				header('Location: '.$url);
 			}
 		}
@@ -60,11 +60,11 @@ switch($step){
 
 	case 2:
 		$token  = $storage->retrieveAccessToken('Flickr');
-		$secret = $token->getAccessTokenSecret();
+		$secret = $token->accessTokenSecret;
 
-		if($token = $flickrService->getAccessToken($oauth_token, $oauth_verifier, $secret)){
-			$oauth_token = $token->getAccessToken();
-			$secret      = $token->getAccessTokenSecret();
+		if($token = $flickrService->getOauth1AccessToken($oauth_token, $oauth_verifier, $secret)){
+			$oauth_token = $token->accessToken;
+			$secret      = $token->accessTokenSecret;
 
 			$storage->storeAccessToken('Flickr', $token);
 
@@ -73,7 +73,7 @@ switch($step){
 		break;
 
 	case 3:
-		$xml = simplexml_load_string($flickrService->request('flickr.test.login'));
+		$xml = simplexml_load_string($flickrService->apiRequest('flickr.test.login'));
 		print "status: ".(string)$xml->attributes()->stat."\n";
 		break;
 }

@@ -10,21 +10,10 @@
 
 namespace OAuth\Service\Providers\OAuth2;
 
-use OAuth\_killme\CredentialsInterface;
-use OAuth\Http\ClientInterface;
-use OAuth\Http\Exception\TokenResponseException;
-use OAuth\Http\Uri;
 use OAuth\Service\OAuth2Service;
-use OAuth\Storage\TokenStorageInterface;
-use OAuth\Token\OAuth2Token;
 
 /**
- * Vimeo service.
- *
- * @author  Pedro Amorim <contact@pamorim.fr>
- * @license http://www.opensource.org/licenses/mit-license.html MIT License
- * @link    https://developer.vimeo.com/
- * @link    https://developer.vimeo.com/api/authentication
+ * @link https://developer.vimeo.com/api/authentication#scope for scope definitions.
  */
 class Vimeo extends OAuth2Service{
 
@@ -33,85 +22,14 @@ class Vimeo extends OAuth2Service{
 	// API Header Accept
 	const HEADER_ACCEPT = 'application/vnd.vimeo.*+json;version=3.2';
 
-	/**
-	 * Scopes
-	 *
-	 * @see  https://developer.vimeo.com/api/authentication#scope
-	 */
-	// View public videos
-	const SCOPE_PUBLIC = 'public';
-	// View private videos
-	const SCOPE_PRIVATE = 'private';
-	// View Vimeo On Demand purchase history
-	const SCOPE_PURCHASED = 'purchased';
-	// Create new videos, groups, albums, etc.
-	const SCOPE_CREATE = 'create';
-	// Edit videos, groups, albums, etc.
-	const SCOPE_EDIT = 'edit';
-	// Delete videos, groups, albums, etc.
-	const SCOPE_DELETE = 'delete';
-	// Interact with a video on behalf of a user, such as liking
-	// a video or adding it to your watch later queue
-	const SCOPE_INTERACT = 'interact';
-	// Upload a video
-	const SCOPE_UPLOAD = 'upload';
-
-
-	protected $API_BASE = 'https://api.vimeo.com/';
+	protected $API_BASE              = 'https://api.vimeo.com/';
 	protected $authorizationEndpoint = 'https://api.vimeo.com/oauth/authorize';
 	protected $accessTokenEndpoint   = 'https://api.vimeo.com/oauth/access_token';
-	protected $authorizationMethod = self::AUTHORIZATION_METHOD_HEADER_BEARER;
+	protected $authorizationMethod   = self::AUTHORIZATION_METHOD_HEADER_BEARER;
 
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function parseAccessTokenResponse($responseBody){
-		$data = json_decode($responseBody, true);
+	protected $accessTokenExpires = true;
 
-		if(null === $data || !is_array($data)){
-			throw new TokenResponseException('Unable to parse response.');
-		}
-		elseif(isset($data['error_description'])){
-			throw new TokenResponseException(
-				'Error in retrieving token: "'.$data['error_description'].'"'
-			);
-		}
-		elseif(isset($data['error'])){
-			throw new TokenResponseException(
-				'Error in retrieving token: "'.$data['error'].'"'
-			);
-		}
+	protected $extraOAuthHeaders = ['Accept' => self::HEADER_ACCEPT];
+	protected $extraApiHeaders   = ['Accept' => self::HEADER_ACCEPT];
 
-		$token = new OAuth2Token();
-		$token->setAccessToken($data['access_token']);
-
-		if(isset($data['expires_in'])){
-			$token->setLifetime($data['expires_in']);
-			unset($data['expires_in']);
-		}
-		if(isset($data['refresh_token'])){
-			$token->setRefreshToken($data['refresh_token']);
-			unset($data['refresh_token']);
-		}
-
-		unset($data['access_token']);
-
-		$token->setExtraParams($data);
-
-		return $token;
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getExtraOAuthHeaders(){
-		return ['Accept' => self::HEADER_ACCEPT];
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	protected function getExtraApiHeaders(){
-		return ['Accept' => self::HEADER_ACCEPT];
-	}
 }

@@ -4,7 +4,7 @@ namespace OAuthTest\Mocks;
 
 use OAuth\Http\Uri;
 use OAuth\Service\OAuth2Service;
-use OAuth\Token\OAuth2Token;
+use OAuth\Token;
 
 class MockOAuth2Service extends OAuth2Service{
 
@@ -22,7 +22,7 @@ class MockOAuth2Service extends OAuth2Service{
 	}
 
 	protected function parseAccessTokenResponse($responseBody){
-		return new OAuth2Token();
+		return new Token();
 	}
 
 	// this allows us to set different auth methods for tests

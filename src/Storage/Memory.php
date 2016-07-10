@@ -2,9 +2,8 @@
 
 namespace OAuth\Storage;
 
-use OAuth\Storage\Exception\AuthorizationStateNotFoundException;
-use OAuth\Storage\Exception\TokenNotFoundException;
-use OAuth\Token\TokenInterface;
+use OAuth\OAuthException;
+use OAuth\Token;
 
 /*
  * Stores a token in-memory only (destroyed at end of script execution).
@@ -13,7 +12,7 @@ use OAuth\Token\TokenInterface;
 class Memory implements TokenStorageInterface{
 
 	/**
-	 * @var object|TokenInterface
+	 * @var object|\OAuth\Token
 	 */
 	protected $tokens;
 
@@ -35,13 +34,13 @@ class Memory implements TokenStorageInterface{
 			return $this->tokens[$service];
 		}
 
-		throw new TokenNotFoundException('Token not stored');
+		throw new OAuthException('Token not stored');
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function storeAccessToken($service, TokenInterface $token){
+	public function storeAccessToken($service, Token $token){
 		$this->tokens[$service] = $token;
 
 		// allow chaining
@@ -52,7 +51,7 @@ class Memory implements TokenStorageInterface{
 	 * {@inheritDoc}
 	 */
 	public function hasAccessToken($service){
-		return isset($this->tokens[$service]) && $this->tokens[$service] instanceof TokenInterface;
+		return isset($this->tokens[$service]) && $this->tokens[$service] instanceof Token;
 	}
 
 	/**
@@ -85,7 +84,7 @@ class Memory implements TokenStorageInterface{
 			return $this->states[$service];
 		}
 
-		throw new AuthorizationStateNotFoundException('State not stored');
+		throw new OAuthException('State not stored');
 	}
 
 	/**
@@ -126,4 +125,5 @@ class Memory implements TokenStorageInterface{
 		// allow chaining
 		return $this;
 	}
+
 }

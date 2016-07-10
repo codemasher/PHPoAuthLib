@@ -4,7 +4,7 @@ namespace OAuthTest\Mocks;
 
 use OAuth\Http\Uri;
 use OAuth\Service\OAuth1Service;
-use OAuth\Token\OAuth1Token;
+use OAuth\Token;
 
 class MockOAuth1Service extends OAuth1Service{
 
@@ -21,10 +21,10 @@ class MockOAuth1Service extends OAuth1Service{
 	}
 
 	protected function parseRequestTokenResponse($responseBody){
-		return new OAuth1Token();
+		return new Token();
 	}
 
 	protected function parseAccessTokenResponse($responseBody){
-		return new OAuth1Token();
+		return new Token();
 	}
 }

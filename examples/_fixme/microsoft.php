@@ -35,13 +35,13 @@ $microsoft = $serviceFactory->createService('microsoft', $credentials, $storage,
 
 if(!empty($_GET['code'])){
 	// This was a callback request from Microsoft, get the token
-	$token = $microsoft->requestAccessToken($_GET['code']);
+	$token = $microsoft->getOAuth2AccessToken($_GET['code']);
 
 	var_dump($token);
 
 }
 elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
-	$url = $microsoft->getAuthorizationUri();
+	$url = $microsoft->getAuthorizationURL();
 	header('Location: '.$url);
 }
 else{

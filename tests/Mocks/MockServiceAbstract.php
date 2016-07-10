@@ -20,7 +20,7 @@ class MockServiceAbstract extends ServiceAbstract{
 	 *
 	 * @return string
 	 */
-	public function request($path, $method = 'GET', $body = null, array $extraHeaders = []){
+	public function apiRequest($path, $method = 'GET', $body = null, array $extraHeaders = []){
 	}
 
 	/**
@@ -30,26 +30,11 @@ class MockServiceAbstract extends ServiceAbstract{
 	 *
 	 * @return \OAuth\Http\Uri
 	 */
-	public function getAuthorizationUri(array $additionalParameters = []){
+	public function getAuthorizationURL(array $additionalParameters = []){
 	}
 
-	/**
-	 * Returns the authorization API endpoint.
-	 *
-	 * @return \OAuth\Http\Uri
-	 */
-	public function getAuthorizationEndpoint(){
-	}
 
-	/**
-	 * Returns the access token API endpoint.
-	 *
-	 * @return \OAuth\Http\Uri
-	 */
-	public function getAccessTokenEndpoint(){
-	}
-
-	public function testDetermineRequestUriFromPath($path, Uri $baseApiUri = null){
-		return $this->determineRequestUriFromPath($path, $baseApiUri);
+	public function testDetermineRequestUriFromPath($path){
+		return $this->determineRequestUriFromPath($path);
 	}
 }

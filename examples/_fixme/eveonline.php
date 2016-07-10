@@ -33,10 +33,10 @@ $eveService = $serviceFactory->createService('EveOnline', $credentials, $storage
 
 if(!empty($_GET['code'])){
 	// This was a callback request from Eve Online, get the token
-	$token = $eveService->requestAccessToken($_GET['code']);
+	$token = $eveService->getOAuth2AccessToken($_GET['code']);
 
 	// Send a request with it
-	$result = json_decode($eveService->request('/oauth/verify'), true);
+	$result = json_decode($eveService->apiRequest('/oauth/verify'), true);
 
 	// Show some of the resultant data
 	print 'CharacterName: '.$result['CharacterName'].PHP_EOL
@@ -48,7 +48,7 @@ if(!empty($_GET['code'])){
 
 }
 elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
-	$url = $eveService->getAuthorizationUri();
+	$url = $eveService->getAuthorizationURL();
 	header('Location: '.$url);
 }
 else{

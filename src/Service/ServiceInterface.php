@@ -2,6 +2,8 @@
 
 namespace OAuth\Service;
 
+use OAuth\Token;
+
 /**
  * Defines methods common among all OAuth services.
  */
@@ -20,7 +22,7 @@ interface ServiceInterface{
 	 *
 	 * @return string
 	 */
-	public function request($path, $method = 'GET', $body = null, array $extraHeaders = []);
+	public function apiRequest($path, $method = 'GET', $body = null, array $extraHeaders = []);
 
 	/**
 	 * Returns the url to redirect to for authorization purposes.
@@ -29,5 +31,15 @@ interface ServiceInterface{
 	 *
 	 * @return \OAuth\Http\Uri
 	 */
-	public function getAuthorizationUri(array $additionalParameters = []);
+	public function getAuthorizationURL(array $additionalParameters = []);
+
+	/**
+	 * Refreshes an OAuth access token
+	 *
+	 * @param  \OAuth\Token $token
+	 *
+	 * @return \OAuth\Token $token
+	 */
+	public function refreshAccessToken(Token $token);
+
 }

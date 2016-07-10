@@ -2,104 +2,78 @@
 
 namespace OAuth\Service;
 
-use OAuth\Http\ClientInterface;
-use OAuth\Http\Uri;
-use OAuth\OauthException;
+use OAuth\Credentials;
+use OAuth\Http\HttpClientInterface;
 use OAuth\Storage\TokenStorageInterface;
+use OAuth\Token;
 
 /**
  * Abstract OAuth service, version-agnostic
  */
 abstract class ServiceAbstract implements ServiceInterface{
 
+	protected $serviceName;
+
 	protected $API_BASE;
 	protected $authorizationEndpoint;
 	protected $accessTokenEndpoint;
 
-	/** @var string */
-	protected $callbackURL;
+	protected $extraOAuthHeaders = [];
+	protected $extraApiHeaders   = [];
 
-	/** @var string */
-	protected $key;
+	/** @var Credentials */
+	protected $credentials;
 
-	/** @var string */
-	protected $secret;
-
-	/** @var ClientInterface */
+	/** @var HttpClientInterface */
 	protected $httpClient;
 
 	/** @var TokenStorageInterface */
 	protected $storage;
 
 	/**
-	 * @param ClientInterface       $httpClient
-	 * @param TokenStorageInterface $storage
+	 * @var string
 	 */
-	public function __construct(ClientInterface $httpClient, TokenStorageInterface $storage, $callbackURL, $key, $secret){
-		$this->callbackURL = $callbackURL;
-		$this->key         = $key;
-		$this->secret      = $secret;
+	protected $tokenSecret = null;
+
+	/**
+	 * ServiceAbstract constructor.
+	 *
+	 * @param \OAuth\Http\HttpClientInterface      $httpClient
+	 * @param \OAuth\Storage\TokenStorageInterface $storage
+	 * @param \OAuth\Credentials                   $credentials
+	 */
+	public function __construct(HttpClientInterface $httpClient, TokenStorageInterface $storage, Credentials $credentials){
 		$this->httpClient  = $httpClient;
 		$this->storage     = $storage;
+		$this->credentials = $credentials;
+
+		$this->serviceName = (new \ReflectionClass($this))->getShortName();
 	}
 
 	/**
-	 * @param \OAuth\Http\Uri|string $path
-	 * @param \OAuth\Http\Uri        $baseApiUri
+	 * @param array $additionalParameters
 	 *
 	 * @return \OAuth\Http\Uri
-	 *
-	 * @throws \OAuth\OauthException
 	 */
-	protected function determineRequestUriFromPath($path, Uri $baseApiUri = null){
+	public function getAuthorizationURL(array $additionalParameters = []){
 
-		if($path instanceof Uri){
-			$uri = $path;
-		}
-		elseif(stripos($path, 'http://') === 0 || stripos($path, 'https://') === 0){
-			$uri = new Uri($path);
-		}
-		else{
-			if(null === $baseApiUri){
-				throw new OauthException(
-					'An absolute URI must be passed to ServiceInterface::request as no baseApiUri is set.'
-				);
-			}
+		$url = $this->authorizationEndpoint;
+		$url .= !empty($additionalParameters)
+			? '?'.http_build_query($additionalParameters)
+			: '';
 
-			$uri = clone $baseApiUri;
-			if(false !== strpos($path, '?')){
-				$parts = explode('?', $path, 2);
-				$path  = $parts[0];
-				$query = $parts[1];
-				$uri->setQuery($query);
-			}
-
-			if($path[0] === '/'){
-				$path = substr($path, 1);
-			}
-
-			$uri->setPath($uri->getPath().$path);
-		}
-
-		return $uri;
+		return $url;
 	}
 
 	/**
-	 * Accessor to the storage adapter to be able to retrieve tokens
+	 * Refreshes an access token
 	 *
-	 * @return TokenStorageInterface
+	 * @param  \OAuth\Token $token
+	 *
+	 * @return \OAuth\Token $token
 	 */
-	public function getStorage(){
-		return $this->storage;
+	public function refreshAccessToken(Token $token){
+		return $token;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function service(){
-		// get class name without backslashes
-		$classname = get_class($this);
-
-		return preg_replace('/^.*\\\\/', '', $classname);
-	}
 }

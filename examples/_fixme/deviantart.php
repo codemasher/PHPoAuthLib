@@ -36,17 +36,17 @@ $deviantArtService = $serviceFactory->createService('DeviantArt', $credentials, 
 
 if(!empty($_GET['code'])){
 	// This was a callback request from facebook, get the token
-	$token = $deviantArtService->requestAccessToken($_GET['code']);
+	$token = $deviantArtService->getOAuth2AccessToken($_GET['code']);
 
 	// Send a request with it
-	$result = json_decode($deviantArtService->request('/user/whoami'), true);
+	$result = json_decode($deviantArtService->apiRequest('/user/whoami'), true);
 
 	// Show some of the resultant data
 	echo 'Your DeviantArt username is: '.$result['username'];
 
 }
 elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
-	$url = $deviantArtService->getAuthorizationUri();
+	$url = $deviantArtService->getAuthorizationURL();
 	header('Location: '.$url);
 }
 else{

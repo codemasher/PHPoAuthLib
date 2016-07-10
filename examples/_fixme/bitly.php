@@ -35,17 +35,17 @@ $bitlyService = $serviceFactory->createService('bitly', $credentials, $storage);
 
 if(!empty($_GET['code'])){
 	// This was a callback request from bitly, get the token
-	$bitlyService->requestAccessToken($_GET['code']);
+	$bitlyService->getOAuth2AccessToken($_GET['code']);
 
 	// Send a request with it
-	$result = json_decode($bitlyService->request('user/info'), true);
+	$result = json_decode($bitlyService->apiRequest('user/info'), true);
 
 	// Show some of the resultant data
 	echo 'Your unique user id is: '.$result['data']['login'].' and your name is '.$result['data']['display_name'];
 
 }
 elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
-	$url = $bitlyService->getAuthorizationUri();
+	$url = $bitlyService->getAuthorizationURL();
 	header('Location: '.$url);
 }
 else{

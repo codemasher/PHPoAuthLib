@@ -2,9 +2,8 @@
 
 namespace OAuth\Storage;
 
-use OAuth\Storage\Exception\AuthorizationStateNotFoundException;
-use OAuth\Storage\Exception\TokenNotFoundException;
-use OAuth\Token\TokenInterface;
+use OAuth\OAuthException;
+use OAuth\Token;
 
 /**
  * Stores a token in a PHP session.
@@ -31,11 +30,7 @@ class Session implements TokenStorageInterface{
 	 * @param string $sessionVariableName the variable name to use within the _SESSION superglobal
 	 * @param string $stateVariableName
 	 */
-	public function __construct(
-		$startSession = true,
-		$sessionVariableName = 'lusitanian-oauth-token',
-		$stateVariableName = 'lusitanian-oauth-state'
-	){
+	public function __construct($startSession = true, $sessionVariableName = 'lusitanian-oauth-token', $stateVariableName = 'lusitanian-oauth-state'){
 		if($startSession && !$this->sessionHasStarted()){
 			session_start();
 		}
@@ -59,18 +54,16 @@ class Session implements TokenStorageInterface{
 			return unserialize($_SESSION[$this->sessionVariableName][$service]);
 		}
 
-		throw new TokenNotFoundException('Token not found in session, are you sure you stored it?');
+		throw new OAuthException('Token not found in session, are you sure you stored it?');
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function storeAccessToken($service, TokenInterface $token){
+	public function storeAccessToken($service, Token $token){
 		$serializedToken = serialize($token);
 
-		if(isset($_SESSION[$this->sessionVariableName])
-		   && is_array($_SESSION[$this->sessionVariableName])
-		){
+		if(isset($_SESSION[$this->sessionVariableName]) && is_array($_SESSION[$this->sessionVariableName])){
 			$_SESSION[$this->sessionVariableName][$service] = $serializedToken;
 		}
 		else{
@@ -116,15 +109,12 @@ class Session implements TokenStorageInterface{
 	 * {@inheritDoc}
 	 */
 	public function storeAuthorizationState($service, $state){
-		if(isset($_SESSION[$this->stateVariableName])
-		   && is_array($_SESSION[$this->stateVariableName])
-		){
+
+		if(isset($_SESSION[$this->stateVariableName]) && is_array($_SESSION[$this->stateVariableName])){
 			$_SESSION[$this->stateVariableName][$service] = $state;
 		}
 		else{
-			$_SESSION[$this->stateVariableName] = [
-				$service => $state,
-			];
+			$_SESSION[$this->stateVariableName] = [$service => $state];
 		}
 
 		// allow chaining
@@ -146,7 +136,7 @@ class Session implements TokenStorageInterface{
 			return $_SESSION[$this->stateVariableName][$service];
 		}
 
-		throw new AuthorizationStateNotFoundException('State not found in session, are you sure you stored it?');
+		throw new OAuthException('State not found in session, are you sure you stored it?');
 	}
 
 	/**
@@ -184,12 +174,6 @@ class Session implements TokenStorageInterface{
 	 * @return bool
 	 */
 	protected function sessionHasStarted(){
-		// For more modern PHP versions we use a more reliable method.
-		if(version_compare(PHP_VERSION, '5.4.0') >= 0){
-			return session_status() != PHP_SESSION_NONE;
-		}
-
-		// Below PHP 5.4 we should test for the current session ID.
-		return session_id() !== '';
+		return session_status() !== PHP_SESSION_NONE;
 	}
 }

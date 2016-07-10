@@ -2,7 +2,7 @@
 
 namespace OAuth\Http;
 
-use OAuth\Http\Exception\TokenResponseException;
+use OAuth\OAuthException;
 
 /**
  * Client implementation for streams/file_get_contents
@@ -20,15 +20,17 @@ class StreamClient extends AbstractHttpClient{
 	 *
 	 * @return string
 	 *
-	 * @throws TokenResponseException
+	 * @throws OAuthException
 	 * @throws \InvalidArgumentException
 	 */
 	public function retrieveResponse(
-		Uri $endpoint,
+		$endpoint,
 		$requestBody,
 		array $extraHeaders = [],
 		$method = 'POST'
 	){
+		$endpoint = new Uri($endpoint);
+
 		// Normalize method name
 		$method = strtoupper($method);
 
@@ -64,12 +66,12 @@ class StreamClient extends AbstractHttpClient{
 		if(false === $response){
 			$lastError = error_get_last();
 			if(is_null($lastError)){
-				throw new TokenResponseException(
+				throw new OAuthException(
 					'Failed to request resource. HTTP Code: '.
 					((isset($http_response_header[0])) ? $http_response_header[0] : 'No response')
 				);
 			}
-			throw new TokenResponseException($lastError['message']);
+			throw new OAuthException($lastError['message']);
 		}
 
 		return $response;

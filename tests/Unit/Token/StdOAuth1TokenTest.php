@@ -2,79 +2,39 @@
 
 namespace OAuthTest\Unit\Token;
 
-use OAuth\Token\OAuth1Token;
-use OAuth\Token\OAuth1TokenInterface;
-use OAuth\Token\TokenAbstract;
+use OAuth\Token;
 
-class StdOAuth1TokenTest extends \PHPUnit_Framework_TestCase{
+class StdTokenAbstractTest extends \PHPUnit_Framework_TestCase{
 
 	/**
 	 *
 	 */
 	public function testConstructCorrectInterfaces(){
-		$token = new OAuth1Token();
+		$token = new \OAuth\Token();
 
-		$this->assertInstanceOf(OAuth1TokenInterface::class, $token);
-		$this->assertInstanceOf(TokenAbstract::class, $token);
+		$this->assertInstanceOf(\OAuth\Token::class, $token);
+		$this->assertInstanceOf(\OAuth\Token::class, $token);
 	}
 
-	/**
 
-	 */
-	public function testSetRequestToken(){
-		$token = new OAuth1Token();
-
-		$this->assertNull($token->setRequestToken('foo'));
-	}
-
-	/**
-
-
-	 */
 	public function testGetRequestToken(){
-		$token = new OAuth1Token();
+		$token = new \OAuth\Token();
+		$token->requestToken = ('foo');
 
-		$this->assertNull($token->setRequestToken('foo'));
-		$this->assertSame('foo', $token->getRequestToken());
+		$this->assertSame('foo', $token->requestToken);
 	}
 
-	/**
 
-	 */
-	public function testSetRequestTokenSecret(){
-		$token = new OAuth1Token();
-
-		$this->assertNull($token->setRequestTokenSecret('foo'));
-	}
-
-	/**
-
-
-	 */
 	public function testGetRequestTokenSecret(){
-		$token = new OAuth1Token();
-
-		$this->assertNull($token->setRequestTokenSecret('foo'));
-		$this->assertSame('foo', $token->getRequestTokenSecret());
+		$token = new \OAuth\Token();
+		$token->requestTokenSecret = 'foo';
+		$this->assertSame('foo', $token->requestTokenSecret);
 	}
 
-	/**
 
-	 */
-	public function testSetAccessTokenSecret(){
-		$token = new OAuth1Token();
-
-		$this->assertNull($token->setAccessTokenSecret('foo'));
-	}
-
-	/**
-
-
-	 */
 	public function testGetAccessTokenSecret(){
-		$token = new OAuth1Token();
-
-		$this->assertNull($token->setAccessTokenSecret('foo'));
-		$this->assertSame('foo', $token->getAccessTokenSecret());
+		$token = new Token();
+		$token->accessTokenSecret = 'foo';
+		$this->assertSame('foo', $token->accessTokenSecret);
 	}
 }

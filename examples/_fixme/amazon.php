@@ -34,17 +34,17 @@ $amazonService = $serviceFactory->createService('amazon', $credentials, $storage
 
 if(!empty($_GET['code'])){
 	// This was a callback request from Amazon, get the token
-	$token = $amazonService->requestAccessToken($_GET['code']);
+	$token = $amazonService->getOAuth2AccessToken($_GET['code']);
 
 	// Send a request with it
-	$result = json_decode($amazonService->request('/user/profile'), true);
+	$result = json_decode($amazonService->apiRequest('/user/profile'), true);
 
 	// Show some of the resultant data
 	echo 'Your unique Amazon user id is: '.$result['user_id'].' and your name is '.$result['name'];
 
 }
 elseif(!empty($_GET['go']) && $_GET['go'] === 'go'){
-	$url = $amazonService->getAuthorizationUri();
+	$url = $amazonService->getAuthorizationURL();
 	header('Location: '.$url);
 }
 else{
